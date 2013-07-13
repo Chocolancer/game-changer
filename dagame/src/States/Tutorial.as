@@ -27,7 +27,7 @@ package States
 		}
 		
 		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void {
-			player.TouchDownCallback(tmap);         
+			player.TouchDownCallback(tmap);
 		}
 	}
 
