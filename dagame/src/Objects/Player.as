@@ -117,7 +117,7 @@ package Objects
 			{
 				if (!this.isInAir && !wasWDown)
 				{
-					this.velocity.y = -400;
+					this.velocity.y = -500;
 					this.play("idle");
 					this.isInAir = true;
 				}

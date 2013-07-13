@@ -11,7 +11,7 @@ package States
 		public function Tutorial() 
 		{ 
 			tmap = new FlxTilemap();
-			tmap.loadMap(new Resources.TMAP_Map, Resources.GFX_ChromaticTileSet, 32, 32); 
+			tmap.loadMap(new Resources.TMAP_Map, Resources.GFX_TestTileSet, 32, 32); 
 		}
 		
 		override public function create():void 
