@@ -13,11 +13,15 @@ package States
 		public function HUB() 
 		{
 				tmap = new FlxTilemap();
-			tmap.loadMap(new Resources.TMAP_Map, Resources.GFX_Player, 32, 32); 
+			tmap.loadMap(new Resources.TMAP_Map_HUB, Resources.GFX_TSET_HUBTiles, 32, 32); 
 		}
 		
 		override public function create():void 
 		{		
+		 	FlxG.worldBounds = new FlxRect( 0, 0, 5000, 5000);
+			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height, 2); 
+			camera.setBounds( 0, 0, 5000, 2700);
+			FlxG.resetCameras(camera);
 			this.add(background);
 			background.scrollFactor.x = 0.5;
 			background.scrollFactor.y = 0.5;
@@ -26,6 +30,7 @@ package States
 			background.x += 640;
 			background.y += 480;
 			super.create(); 
+			
 		}
 		
 		
