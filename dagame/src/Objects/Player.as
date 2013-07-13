@@ -19,8 +19,10 @@ package Objects
 			 this.loadGraphic(GFX_Player, true, true, 92, 92);
 			 
 			 this.addAnimation("idle", [0]);
-			 this.addAnimation("running", [0,1,2,3,4,5,6],16);
+			 this.addAnimation("running", [0,1,2,3,4,5,6],10);
 			 this.play("idle");
+			 this.maxVelocity.x = 400;
+			 this.maxVelocity.y = 1000;
 		}
 		
 		
@@ -31,20 +33,68 @@ package Objects
 			
 			if (FlxG.keys.A)
 			{
-				this.velocity.x = -70;
+				if (!this.isInAir)
+				{
+					this.velocity.x -= 20;
+				}
+				else
+				{
+					this.velocity.x -= 5;
+				}
 				isFacingForward = false;
-				this.play("running");
+				if (!this.isInAir)
+				{
+					this.play("running");
+				}
+				else
+				{
+					this.play("idle");
+				}
 			}
 			else if (FlxG.keys.D)
 			{
-				this.velocity.x = 70;
+				if (!this.isInAir)
+				{
+					this.velocity.x += 20;
+				}
+				else
+				{
+					this.velocity.x += 5;
+				}
 				isFacingForward = true;
-				this.play("running");
+				if (!this.isInAir)
+				{
+					this.play("running");
+				}
+				else
+				{
+					this.play("idle");
+				}
 			}
 			else
 			{ 
-				this.velocity.x = 0;
-				this.play("idle");
+				if (this.velocity.x > 0)
+				{
+					this.velocity.x -= 20;
+					if (this.velocity.x < 0)
+					{
+						this.velocity.x = 0;
+					}
+					this.play("running");
+				}
+				else if (this.velocity.x < 0)
+				{
+					this.velocity.x += 20;
+					if (this.velocity.x > 0)
+					{
+						this.velocity.x = 0;
+					}
+					this.play("running");
+				}
+				else
+				{
+					this.play("idle");
+				}
 			}
 			
 			
@@ -52,7 +102,7 @@ package Objects
 			{
 				if (!this.isInAir && !wasWDown)
 				{
-					this.velocity.y = -300;
+					this.velocity.y = -400;
 					this.play("idle");
 					this.isInAir = true;
 				}
