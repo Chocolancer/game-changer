@@ -12,8 +12,9 @@ package States
 		protected var tmap:FlxTilemap;
 		protected var camera:CustCamera;
 		protected var life_display:FlxText;
+		protected var time_display:FlxText;
 		protected var timer:FlxTimer;
-		protected var time_remaining:int;
+		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
 
 		public function IAG_GameLevelState()
 		{
@@ -36,23 +37,40 @@ package States
 			life_display = new FlxText(0, 0, 100, "Lives: " + player.numberOfLives);
 			life_display.scrollFactor = new FlxPoint();
 			this.add(life_display);
-
-			time_remaining = 180;
-			//timer.start(1, time_remaining /* callback function to "kill" the player */);
-	
-			camera.follow(player, FlxCamera.STYLE_LOCKON);
+			timer = new FlxTimer();
+			timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
+			
+			time_display = new FlxText(0, 10, 100, "Time: " + TIME_TO_COMPLETE_LEVEL_SECONDS);
+			time_display.scrollFactor = new FlxPoint();
+			this.add(time_display);
 			camera.zoom = 2;
 		}
 		
-		override public function update():void 
+		override public function update():void
 		{
 			super.update();
 			FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 		}
 		
-		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void {
+		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void
+		{
 			player.TouchDownCallback(tmap);
+		}
+		
+		private function onTimer(timer:FlxTimer):void
+		{
+			if (timer.loopsLeft == 0)
+			{
+				// kill off the player
+			}
+			else
+			{
+				this.remove(time_display);
+				time_display = new FlxText(0, 10, 100, "Time: " + timer.loopsLeft);
+				time_display.scrollFactor = new FlxPoint();
+				this.add(time_display);
+			}
 		}
 	}
 }
