@@ -35,6 +35,14 @@ package Objects
 			super.update();
 			acceleration.y = 600;
 			
+			if (!this.alive && !this.exists) {
+				this.reset();
+			}
+			
+			if (numberOfLives == 0) {
+				this.alive = false;
+			}
+			
 			if (!this.isTouching(FLOOR))
 			{
 				this.isInAir = true;
