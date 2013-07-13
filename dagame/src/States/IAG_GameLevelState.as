@@ -49,6 +49,7 @@ package States
 		override public function update():void
 		{
 			super.update();
+			life_display.text = "Lives: " + player.numberOfLives;
 			FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 		}
@@ -62,7 +63,7 @@ package States
 		{
 			if (timer.loopsLeft == 0)
 			{
-				// kill off the player
+				player.alive = false;
 			}
 			else
 			{
