@@ -9,7 +9,7 @@ package Objects
 	{
 		[Embed(source = "/../art/test_player.png")] public static var GFX_Player:Class;
 		
-		
+		var isInAir:Boolean = true;
 		var isFacingForward:Boolean = false;
 		
 		public function Player() 
@@ -39,19 +39,18 @@ package Objects
 				isFacingForward = true;
 				this.play("running");
 			}
-			else if (FlxG.keys.W)
-			{
-				this.velocity.y = -70;
-				this.play("running");
-			}
-			else if (FlxG.keys.S)
-			{
-				this.velocity.y = 70;
-				this.play("running");
-			}else
+			else
 			{ 
 				this.velocity.x = 0;
 				this.play("idle");
+			}
+			
+			
+			if (FlxG.keys.W && !this.isInAir)
+			{
+				this.velocity.y = -70;
+				this.play("idle");
+				this.isInAir = true;
 			}
 			
 			if (isFacingForward)
@@ -62,10 +61,11 @@ package Objects
 			{
 				this.facing = FlxObject.RIGHT;
 			}
-			
-			
 		}
 		
+		public function TouchDownCallback():void {
+			this.isInAir = false;
+		}
 	}
 
 }

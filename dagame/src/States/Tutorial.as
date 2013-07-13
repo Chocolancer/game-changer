@@ -13,6 +13,7 @@ package States
 		private var camera:FlxCamera;
 		
 		[Embed(source = "/../art/test_player.png")] public static var GFX_Player:Class; 
+		[Embed(source = "/../art/testtileart.png")] public static var GFX_TileSet:Class; 
 		[Embed(source = "/../tilemaps/testtile.txt", mimeType = "application/octet-stream")] public var TMAP_Map:Class;
 		
 		public function Tutorial() 
@@ -26,7 +27,7 @@ package States
 		{
 			super.create();
 				tmap = new FlxTilemap();
-			tmap.loadMap(new TMAP_Map, GFX_Player, 32, 32);
+			tmap.loadMap(new TMAP_Map, GFX_TileSet, 32, 32);
 			this.add(tmap); 
 			this.add(player); 
 			
