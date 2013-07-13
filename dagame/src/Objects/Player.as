@@ -7,7 +7,7 @@ package Objects
 	 */
 	public class Player extends IAG_Sprite
 	{
-		[Embed(source = "/../art/test_player.png")] public static var GFX_Player:Class;
+		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
 		
 		
 		var isFacingForward:Boolean = false;
