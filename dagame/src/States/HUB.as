@@ -38,7 +38,8 @@ package States
 		override public function update():void 
 		{
 			super.update();
-			FlxG.collide(tmap, player); 
+			FlxG.collide(tmap, player);
+		
 		}
 		
 	}
