@@ -12,6 +12,8 @@ package States
 		protected var tmap:FlxTilemap;
 		protected var camera:FlxCamera;
 		protected var life_display:FlxText;
+		protected var timer:FlxTimer;
+		protected var time_remaining:int;
 
 		public function IAG_GameLevelState()
 		{
@@ -34,6 +36,22 @@ package States
 			life_display = new FlxText(0, 0, 100, "Lives: " + player.numberOfLives);
 			life_display.scrollFactor = new FlxPoint();
 			this.add(life_display);
+
+			time_remaining = 180;
+			timer.start(1, time_remaining /* callback function to "kill" the player */);
+	
+			camera.follow(player, FlxCamera.STYLE_LOCKON);
+		}
+		
+		override public function update():void 
+		{
+			super.update();
+			
+			FlxG.collide(tmap, player, PlayerTouchDown);
+		}
+		
+		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void {
+			player.TouchDownCallback(tmap);
 		}
 	}
 }
