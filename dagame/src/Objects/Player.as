@@ -10,6 +10,7 @@ package Objects
 		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
 		
 		var isInAir:Boolean = true;
+		var wasWDown:Boolean = false;
 		var isFacingForward:Boolean = false;
 		
 		public function Player() 
@@ -46,11 +47,19 @@ package Objects
 			}
 			
 			
-			if (FlxG.keys.W && !this.isInAir)
+			if (FlxG.keys.W)
 			{
-				this.velocity.y = -70;
-				this.play("idle");
-				this.isInAir = true;
+				if (!this.isInAir && !wasWDown)
+				{
+					this.velocity.y = -300;
+					this.play("idle");
+					this.isInAir = true;
+				}
+				wasWDown = true;
+			}
+			else
+			{
+				wasWDown = false;
 			}
 			
 			if (isFacingForward)
@@ -63,8 +72,11 @@ package Objects
 			}
 		}
 		
-		public function TouchDownCallback():void {
-			this.isInAir = false;
+		public function TouchDownCallback(tmap:FlxTilemap):void {
+			if (this.justTouched(FLOOR))
+			{
+				this.isInAir = false;
+			}
 		}
 	}
 
