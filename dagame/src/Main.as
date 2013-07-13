@@ -14,7 +14,7 @@ package
 			
 			//super(640, 360, Tutorial, 2); //Create a new FlxGame object and load "PlayState" 
 			//super(320, 240, Intro, 2); //Create a new FlxGame object and load "PlayState" 
-			super(640, 360, Tutorial, 2);
+			super(640, 360, PaperscrapLevel, 2);
 		}
 	}
 	

@@ -10,6 +10,8 @@ package States
 	{		
 		public function Tutorial() 
 		{ 
+			player.x = 64;
+			player.y = 90;
 			tmap = new FlxTilemap();
 			tmap.loadMap(new Resources.TMAP_Map, Resources.GFX_TestTileSet, 32, 32); 
 		}
