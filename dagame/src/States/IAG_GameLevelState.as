@@ -43,5 +43,16 @@ package States
 	
 			camera.follow(player, FlxCamera.STYLE_LOCKON);
 		}
+		
+		override public function update():void 
+		{
+			super.update();
+			
+			FlxG.collide(tmap, player, PlayerTouchDown);
+		}
+		
+		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void {
+			player.TouchDownCallback(tmap);
+		}
 	}
 }
