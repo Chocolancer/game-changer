@@ -10,7 +10,7 @@ package Objects
 		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
 		
 		public var isInAir:Boolean = true;
-		public var isJumping = false;
+		public var isJumping:Boolean = false;
 		public var wasWDown:Boolean = false;
 		public var isFacingForward:Boolean = false;
 		public var numberOfLives:int = 2;

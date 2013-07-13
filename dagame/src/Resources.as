@@ -31,8 +31,7 @@ package
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
 		[Embed(source = "/../assets/gameart/TheEnd.png")] public static var GFX_THE_END:Class;
-		[Embed(source = "/../assets/gameart/TheStart.png")] public static var GFX_THE_START:Class; 
-
+		[Embed(source = "/../assets/gameart/StartSprite.png")] public static var GFX_THE_START:Class;
 		
 		
 

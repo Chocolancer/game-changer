@@ -8,7 +8,7 @@ package Objects
 	 */
 	public class IAG_Sprite extends FlxSprite 
 	{
-		protected var isDying = false;
+		protected var isDying:Boolean = false;
 		
 		public function IAG_Sprite() 
 		{
