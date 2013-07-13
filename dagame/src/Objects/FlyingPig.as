@@ -4,10 +4,20 @@ package Objects
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class FlyingPig extends Enemy
+	public class FlyingPig extends IAG_Sprite
 	{
 		
-		public function FlyingPig() 
+		public function FlyingPig(x:int, y:int) //enemy example
+		{
+			//this.loadGraphic(GFX_Player, true, true, 92, 92);
+			this.x = x;
+			this.y = y;
+			//this.addAnimation("fly", [0]);
+			this.play("fly");
+			this.maxVelocity.x = 450;
+		}
+		
+		override public function update():void 
 		{
 			
 		}
