@@ -10,7 +10,7 @@ package States
 	{
 		protected var player:Player = new Player();
 		protected var tmap:FlxTilemap;
-		protected var camera:FlxCamera;
+		protected var camera:CustCamera;
 		protected var life_display:FlxText;
 		protected var time_display:FlxText;
 		protected var timer:FlxTimer;
@@ -27,9 +27,9 @@ package States
 			this.add(tmap); 
 			this.add(player); 
 			
-			FlxG.worldBounds = new FlxRect( -500, -500, 10000, 10000);
-			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height, 2);
-			camera.setBounds( -500, -500, 10000, 10000);
+			FlxG.worldBounds = new FlxRect( 0, 0, 10000, 10000);
+			camera = new CustCamera(0, 0, FlxG.width * 2, FlxG.height * 2, 1);
+			camera.setBounds( -20, -20, 8020, 1468);
 			FlxG.resetCameras(camera);
 			
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
@@ -37,22 +37,20 @@ package States
 			life_display = new FlxText(0, 0, 100, "Lives: " + player.numberOfLives);
 			life_display.scrollFactor = new FlxPoint();
 			this.add(life_display);
-
 			timer = new FlxTimer();
 			timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
 			
 			time_display = new FlxText(0, 10, 100, "Time: " + TIME_TO_COMPLETE_LEVEL_SECONDS);
 			time_display.scrollFactor = new FlxPoint();
 			this.add(time_display);
-			
-			camera.follow(player, FlxCamera.STYLE_LOCKON);
+			camera.zoom = 2;
 		}
 		
 		override public function update():void
 		{
 			super.update();
-			
 			FlxG.collide(tmap, player, PlayerTouchDown);
+			camera.alignCamera();
 		}
 		
 		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void

@@ -1,12 +1,12 @@
 package  
 {
-	import org.flixel.FlxG;
 	/**
 	 * ...
 	 * @author Akari Nakashige
 	 */
 	public class Resources 
 	{
+<<<<<<< HEAD
 		//TILES
 		[Embed(source = "/../assets/tiles/raymario.png")] public static var GFX_TestTileSet:Class;
 		[Embed(source = "/../assets/tiles/chromatic.png")] public static var GFX_ChromaticTileSet:Class; 
@@ -17,6 +17,11 @@ package
 		[Embed(source = "/../assets/gameart/hub_tiles.png")] public static var GFX_TSET_HUBTiles:Class; 
 		
 		//TILEMAPS
+=======
+		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
+		[Embed(source = "/../assets/tiles/raytiles.png")] public static var GFX_TestTileSet:Class;
+		[Embed(source = "/../assets/tiles/chromatic_tileset.png")] public static var GFX_ChromaticTileSet:Class; 
+>>>>>>> 624f9639be08e3590cefc08912768c724df44586
 		[Embed(source = "/../tilemaps/testmap.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
 		//[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;

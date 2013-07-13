@@ -10,19 +10,23 @@ package Objects
 		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
 		
 		public var isInAir:Boolean = true;
+		public var isJumping = false;
 		public var wasWDown:Boolean = false;
 		public var isFacingForward:Boolean = false;
 		public var numberOfLives:int = 3;
+		public var jumpTimer:FlxTimer;
 
 		public function Player() 
 		{
 			 this.loadGraphic(GFX_Player, true, true, 92, 92);
-			 
+			 this.x = 100;
+			 this.y = 200;
 			 this.addAnimation("idle", [0]);
 			 this.addAnimation("running", [0,1,2,3,4,5,6],10);
 			 this.play("idle");
 			 this.maxVelocity.x = 400;
 			 this.maxVelocity.y = 1000;
+			 jumpTimer = new FlxTimer();
 		}
 		
 		
@@ -30,6 +34,19 @@ package Objects
 		{
 			super.update();
 			acceleration.y = 600;
+			
+			if (!this.alive && !this.exists) {
+				this.reset();
+			}
+			
+			if (numberOfLives == 0) {
+				this.alive = false;
+			}
+			
+			if (!this.isTouching(FLOOR))
+			{
+				this.isInAir = true;
+			}
 			
 			if (FlxG.keys.A)
 			{
@@ -114,16 +131,27 @@ package Objects
 			
 			if (FlxG.keys.W)
 			{
-				if (!this.isInAir && !wasWDown)
+				if (isJumping)
 				{
-					this.velocity.y = -400;
+					this.velocity.y = -300;
+					if (this.isTouching(CEILING))
+					{
+						isJumping = false;
+					}
+				}
+				else if (!this.isInAir && !wasWDown)
+				{
+					this.velocity.y = -150;
 					this.play("idle");
 					this.isInAir = true;
+					this.isJumping = true;
+					jumpTimer.start(0.5, 1, JumpCallback);
 				}
 				wasWDown = true;
 			}
 			else
 			{
+				isJumping = false;
 				wasWDown = false;
 			}
 			
@@ -142,6 +170,10 @@ package Objects
 			{
 				this.isInAir = false;
 			}
+		}
+		
+		private function JumpCallback(Timer:FlxTimer):void {
+			isJumping = false;
 		}
 	}
 
