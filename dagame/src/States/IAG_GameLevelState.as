@@ -9,7 +9,7 @@ package States
 	 */
 	public class IAG_GameLevelState extends IAG_State 
 	{
-		protected var player:Player;
+		protected var player:Player = new Player();
 		protected var tmap:FlxTilemap;
 		protected var camera:CustCamera;
 		protected var life_display:FlxText;
@@ -33,7 +33,7 @@ package States
 			
 			FlxG.worldBounds = new FlxRect( 0, 0, 10000, 10000);
 			camera = new CustCamera(0, 0, FlxG.width * 2, FlxG.height * 2, 1);
-			camera.setBounds( -20, -20, 8040, 1468);
+			camera.setBounds( -20, -20, 8040, 8040);
 			FlxG.resetCameras(camera);
 			
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
