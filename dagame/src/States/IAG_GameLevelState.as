@@ -38,6 +38,7 @@ package States
 			this.add(life_display);
 
 			time_remaining = 180;
+			timer = new FlxTimer();
 			timer.start(1, time_remaining /* callback function to "kill" the player */);
 	
 			camera.follow(player, FlxCamera.STYLE_LOCKON);
