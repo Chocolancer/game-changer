@@ -75,7 +75,14 @@ package Objects
 			{ 
 				if (this.velocity.x > 0)
 				{
-					this.velocity.x -= 20;
+					if (this.isInAir)
+					{
+						this.velocity.x -= 3;
+					}
+					else
+					{
+						this.velocity.x -= 20;
+					}
 					if (this.velocity.x < 0)
 					{
 						this.velocity.x = 0;
@@ -84,7 +91,14 @@ package Objects
 				}
 				else if (this.velocity.x < 0)
 				{
-					this.velocity.x += 20;
+					if (this.isInAir)
+					{
+						this.velocity.x += 3;
+					}
+					else
+					{
+						this.velocity.x += 20;
+					}
 					if (this.velocity.x > 0)
 					{
 						this.velocity.x = 0;

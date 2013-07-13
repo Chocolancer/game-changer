@@ -35,5 +35,16 @@ package States
 			life_display.scrollFactor = new FlxPoint();
 			this.add(life_display);
 		}
+		
+		override public function update():void 
+		{
+			super.update();
+			
+			FlxG.collide(tmap, player, PlayerTouchDown);
+		}
+		
+		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void {
+			player.TouchDownCallback(tmap);
+		}
 	}
 }
