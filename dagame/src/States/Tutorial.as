@@ -17,11 +17,18 @@ package States
 		
 		public function Tutorial() 
 		{
-			tmap = new FlxTilemap();
+		
+			
+			
+		}
+		
+		override public function create():void 
+		{
+			super.create();
+				tmap = new FlxTilemap();
 			tmap.loadMap(new TMAP_Map, GFX_Player, 32, 32);
 			this.add(tmap); 
 			this.add(player); 
-			
 			
 			FlxG.worldBounds = new FlxRect( -500, -500, 1000, 1000);
 			camera = new FlxCamera(0, 0, FlxG.width, FlxG.height, 2);
@@ -29,8 +36,6 @@ package States
 			FlxG.resetCameras(camera);
 			
 			camera.follow(player, FlxCamera.STYLE_LOCKON);
-			
-			
 		}
 		
 		override public function update():void 
