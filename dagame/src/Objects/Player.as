@@ -17,7 +17,8 @@ package Objects
 		public function Player() 
 		{
 			 this.loadGraphic(GFX_Player, true, true, 92, 92);
-			 
+			 this.x = 100;
+			 this.y = 200;
 			 this.addAnimation("idle", [0]);
 			 this.addAnimation("running", [0,1,2,3,4,5,6],10);
 			 this.play("idle");

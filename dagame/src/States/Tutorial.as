@@ -17,11 +17,7 @@ package States
 		override public function create():void 
 		{
 			super.create();		
-		}
-		
-		
-		
-		
+		}		
 	}
 
 }
