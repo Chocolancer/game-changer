@@ -1,6 +1,7 @@
 package Objects 
 {
 	import org.flixel.*;
+	import org.flixel.system.FlxTile;
 	/**
 	 * ...
 	 * @author Akari Nakashige
@@ -16,22 +17,26 @@ package Objects
 		
 		override public function update():void 
 		{
-			if (!this.alive) {
+			super.update();
+			
+			if (!this.alive && !this.isDying) {
 				this.velocity.x = 0;
-				this.velocity.y = -700;
+				this.velocity.y = -500;
 				//change sprite
 				this.isDying = true;
 			}
 			
 			if (this.isDying) {
-				velocity.y += 5;
-				if (velocity.y == 0) {
+				this.velocity.y += 5;
+				if (this.velocity.y >= 700) {
 					this.kill();
 					this.isDying = false;
 				}
 			}
-			
-			super.update();
+		}
+		
+		public function fall(tile: FlxTile = null, target: Object = null): void {
+			this.alive = false;
 		}
 	}
 
