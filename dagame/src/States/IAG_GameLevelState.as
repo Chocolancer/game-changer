@@ -63,6 +63,8 @@ package States
 				deathTimer.start(4, 1, DeathReset)
 				handlingDeath = true;
 			}
+			life_display.text = "Lives: " + player.numberOfLives;
+			FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 			
 			
@@ -78,6 +80,8 @@ package States
 			if (timer.loopsLeft == 0)
 			{
 				player.Kill();
+
+				player.alive = false;
 			}
 			else
 			{

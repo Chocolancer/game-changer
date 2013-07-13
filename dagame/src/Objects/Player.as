@@ -14,7 +14,7 @@ package Objects
 		public var isJumping:Boolean = false;
 		public var wasWDown:Boolean = false;
 		public var isFacingForward:Boolean = false;
-		public var numberOfLives:int = 3;
+		public var numberOfLives:int = 2;
 		public var jumpTimer:FlxTimer;
 		public var isDead:Boolean = false;
 
@@ -66,6 +66,19 @@ package Objects
 		}
 		
 		private function UpdateAlive():void {
+			
+			super.update();
+			acceleration.y = 600;
+			
+			if (!this.alive && !this.exists) {
+				this.numberOfLives--;
+				this.reset(10, 10);
+			}
+			
+			if (numberOfLives < 0) {
+				FlxG.resetGame(); //temporary until possible to show game over
+			}
+			
 			if (!this.isTouching(FLOOR))
 			{
 				this.isInAir = true;
