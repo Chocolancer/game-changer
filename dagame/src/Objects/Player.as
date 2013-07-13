@@ -9,9 +9,9 @@ package Objects
 	{
 		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
 		
-		var isInAir:Boolean = true;
-		var isFacingForward:Boolean = false;
-		var numberOfLives:int = 3;
+		public var isInAir:Boolean = true;
+		public var isFacingForward:Boolean = false;
+		public var numberOfLives:int = 3;
 		
 		public function Player() 
 		{
