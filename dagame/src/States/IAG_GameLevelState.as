@@ -29,7 +29,7 @@ package States
 			
 			FlxG.worldBounds = new FlxRect( 0, 0, 10000, 10000);
 			camera = new CustCamera(0, 0, FlxG.width * 2, FlxG.height * 2, 1);
-			camera.setBounds( -20, -20, 4152, 1468);
+			camera.setBounds( -20, -20, 8020, 1468);
 			FlxG.resetCameras(camera);
 			
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
