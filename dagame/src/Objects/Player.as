@@ -11,6 +11,7 @@ package Objects
 		
 		var isInAir:Boolean = true;
 		var isFacingForward:Boolean = false;
+		var numberOfLives:int = 3;
 		
 		public function Player() 
 		{
