@@ -10,6 +10,8 @@ package
 		[Embed(source = "/../tilemaps/testtile.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
 
 		
+		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
+		
 		public function Resources() 
 		{
 			
