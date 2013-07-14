@@ -6,9 +6,7 @@ package States
 	 * @author Akari Nakashige
 	 */
 	public class GameOver extends IAG_State 
-	{
-		
-		
+	{  
 		private var text:FlxText = new FlxText(100, 100, 600, "GAME OVER");
 		private var text2:FlxText = new FlxText(100, 200, 600, "Press Space To Continue");
 		
@@ -27,12 +25,10 @@ package States
 		override public function update():void 
 		{
 			super.update();
-			
-			
-			
+			 
 			if (FlxG.keys.SPACE)
 			{
-				FlxG.switchState(new Story_Intro());
+				FlxG.switchState(new MainMenu());
 			}
 		}
 	}
