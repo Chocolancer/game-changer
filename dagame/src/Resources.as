@@ -17,14 +17,22 @@ package
 		[Embed(source = "/../assets/gameart/hub_tiles.png")] public static var GFX_TSET_HUBTiles:Class; 
 		
 		//TILEMAPS
+<<<<<<< HEAD
+		[Embed(source = "/../tilemaps/testmap.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
+		[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+		//[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+=======
 		[Embed(source = "/../tilemaps/dungeon.txt", mimeType = "application/octet-stream")] public static var TMAP_Dungeon:Class;
 		//[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+>>>>>>> f30276c61b02f2f540f1df7855fe4ef61f204f9b
 		[Embed(source = "/../tilemaps/disco.csv", mimeType = "application/octet-stream")] public static var TMAP_DiscoMap:Class;
 		[Embed(source = "/../tilemaps/malio.csv", mimeType = "application/octet-stream")] public static var TMAP_MalioMap:Class;
 		[Embed(source = "/../tilemaps/paperscraps.csv", mimeType = "application/octet-stream")] public static var TMAP_PaperscrapsMap:Class;
 		[Embed(source = "/../tilemaps/tower.csv", mimeType = "application/octet-stream")] public static var TMAP_TowerMap:Class;
+		[Embed(source = "/../tilemaps/boss.csv", mimeType = "application/octet-stream")] public static var TMAP_BossMap:Class;
 		
+
 		//SPRITES
 		//[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
 		[Embed(source = "/../assets/gameart/player.png")] public static var GFX_Player:Class;
@@ -37,7 +45,7 @@ package
 		[Embed(source = "../assets/gameart/penguin.png")] public static var GFX_Penguin:Class;
 		[Embed(source="../assets/gameart/trashcan.png")] public static var GFX_Trashcan:Class;
 		[Embed(source="../assets/gameart/movingspikes.png")] public static var GFX_Movingspikes:Class;
-		[Embed(source="../assets/gameart/axe.png")] public static var GFX_Axe:Class;
+		[Embed(source="../assets/gameart/WhiteKnight.png")] public static var GFX_WhiteKnight:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
@@ -48,10 +56,9 @@ package
 		[Embed(source = "/../assets/sounds/prock.mp3")] public static var SND_Partyrock:Class; 
 		[Embed(source = "/../assets/sounds/jump.mp3")] public static var SND_Jump:Class; 
 		[Embed(source = "/../assets/sounds/throw.mp3")] public static var SND_Throw:Class; 
-		
-		public function Resources() 
-		{
-			
-		}
+		[Embed(source = "/../assets/sounds/playerdie.mp3")] public static var SND_Playerdie:Class; 
+		[Embed(source = "/../assets/sounds/enemydie.mp3")] public static var SND_Enemydie:Class; 
+		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class;
+		[Embed(source = "/../assets/sounds/Tower 1.mp3")] public static var SND_TowerLevel:Class;
 	}
 }

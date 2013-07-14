@@ -37,6 +37,7 @@ package States
 			camera.follow(player);
 			FlxG.resetCameras(camera);
 			
+			FlxG.playMusic(Resources.SND_TowerLevel);
 			
 			spikesHitbox = new FlxSprite(0, 3590);
 			spikesHitbox.makeGraphic(1400, 100, 0x00dd0000);

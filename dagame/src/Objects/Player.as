@@ -100,6 +100,8 @@ package Objects
 		}
 		
 		public function Kill():void {
+			sound.loadEmbedded(Resources.SND_Playerdie);
+			sound.play(true);
 			this.isDead = true;
 			this.play("idle");
 			this.numberOfLives--;
@@ -203,7 +205,7 @@ package Objects
 					this.velocity.y = 0;
 					this.isInAir = true;
 					this.isJumping = true;
-					this.jumpTimer.start(1, 1, JumpCallback);
+					this.jumpTimer.start(0.5, 1, JumpCallback);
 				}
 				this.wasWDown = true;
 			}
