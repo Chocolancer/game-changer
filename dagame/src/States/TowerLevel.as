@@ -75,10 +75,6 @@ package States
 		override public function update():void 
 		{
 			super.update();
-			
-			
-			
-			
 			spikesHitbox.velocity.y = -45;
 			
 			FlxG.overlap(this.player, this.spikesHitbox, handlePlayerSpikes);
@@ -88,13 +84,13 @@ package States
 				scissorGroup.members[i].y = spikesHitbox.y + 20;
 			}
 		}
-		
 		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
 		{
 			super.playerEnemyCallback(player, enemy);
 					handlePlayerSpikes(player, enemy);
 			return player;
 		}
+		
 		
 		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject)
 		{
