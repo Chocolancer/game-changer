@@ -8,7 +8,7 @@ package States
 	*/
 	public class EndGame extends IAG_State
 	{
-		private var text:FlxText = new FlxText(100, 100, 400, "Athena traveled the dangerous digital landscapes to conquor all this levels and replace herself as the main proaganist. The game was shipped with the female protaganist without knowledge of the upper management. To the managements suprise the sales numbers were far higher than their sales estimates. It was assumed the designer put the character back into the game without knowlege of her superiors. After much infighting the designer was promoted to a lead designer position.");
+		private var text:FlxText = new FlxText(100, 100, 400, "Athena traveled through dangerous digital landscapes to dominate Goran's throne and replace herself as the main protagonist. The game was shipped with the female protagonist without knowledge of the upper management. To the their surprise, the sales numbers were far higher than what they estimated. It was assumed the designer put the character back into the game without knowlege of her superiors. After much infighting the designer was promoted to a lead designer position.");
 		private var text2:FlxText = new FlxText(100, 300, 400,"Press SPACE");
 		public function EndGame()
 		{
