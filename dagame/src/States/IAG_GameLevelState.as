@@ -19,8 +19,8 @@ package States
 		protected var handlingDeath:Boolean = false;
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
 		
-		protected var enemyGroup:FlxGroup = new FlxGroup();
-
+		protected var enemyGroup:FlxGroup = new FlxGroup(); 
+protected var enemyCollideGroup:FlxGroup = new FlxGroup(); 
 		public function IAG_GameLevelState()
 		{
 	
@@ -53,6 +53,8 @@ package States
 			camera.zoom = 2;
 			
 			this.add(enemyGroup);
+			
+			camera.flash(0xff000000);
 		}
 		
 		override public function update():void
@@ -68,12 +70,15 @@ package States
 				handlingDeath = true;
 			}
 			life_display.text = "Lives: " + player.numberOfLives;
-			FlxG.collide(tmap, player, PlayerTouchDown);
+			//FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 			
-			FlxG.overlap(player,enemyGroup,  playerEnemyCallback);
+			FlxG.overlap(player, enemyGroup,  playerEnemyCallback);
+			FlxG.collide(enemyCollideGroup, tmap);
 			
 		}
+		
+		 
 		
 		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
 		{

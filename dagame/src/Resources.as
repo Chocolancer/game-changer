@@ -31,7 +31,11 @@ package
 		[Embed(source = "/../assets/gameart/fireball.png")] public static var GFX_Fireball:Class;
 		[Embed(source = "/../assets/gameart/door.png")] public static var GFX_Door:Class;
 		[Embed(source = "../assets/gameart/flyingpig.png")] public static var GFX_FlyingPig:Class
-		[Embed(source="../assets/gameart/scissors.png")] public static var GFX_Scissors:Class
+		[Embed(source = "../assets/gameart/scissors.png")] public static var GFX_Scissors:Class
+		[Embed(source = "../assets/gameart/lapoubelle.png")] public static var GFX_Poubelle:Class;
+		[Embed(source = "../assets/gameart/computer.png")] public static var GFX_Computere:Class;
+		[Embed(source = "../assets/gameart/penguin.png")] public static var GFX_Penguin:Class;
+		[Embed(source="../assets/gameart/trashcan.png")] public static var GFX_Trashcan:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
@@ -39,25 +43,9 @@ package
 		[Embed(source = "/../assets/gameart/StartSprite.png")] public static var GFX_THE_START:Class;
 		
 		
-
-		
-		
-		
-		
-		
-		
-
-
-		
-		
 		public function Resources() 
 		{
 			
 		}
-		
-		
-		
-		
 	}
-
 }

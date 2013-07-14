@@ -45,7 +45,7 @@ package States
 			FlxG.resetCameras(camera);
 			
 			
-			spikesHitbox = new FlxSprite(0, 3500);
+			spikesHitbox = new FlxSprite(0, 3590);
 			spikesHitbox.makeGraphic(1400, 100, 0x00dd0000);
 			this.add(spikesHitbox);
 			//var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
@@ -53,7 +53,7 @@ package States
 						
 			for (var i:int = 0; i < 8; i++)
 			{
-				var scissor:FlxSprite = new FlxSprite(160 * (i + 1), 3344);
+				var scissor:FlxSprite = new FlxSprite(160 * (i + 1), 3414);
 				 
 				scissor.loadGraphic( Resources.GFX_Scissors, true, false, 75, 144);
 			
@@ -79,7 +79,7 @@ package States
 			
 			
 			
-			spikesHitbox.velocity.y = -35;
+			spikesHitbox.velocity.y = -45;
 			
 			FlxG.overlap(this.player, this.spikesHitbox, handlePlayerSpikes);
 			

@@ -35,6 +35,8 @@ package Objects
 			}
 		}
 		
+		
+		
 		public function fall(tile: FlxTile = null, target: Object = null): void {
 			this.alive = false;
 		}

@@ -43,7 +43,7 @@ package Objects
 			this.x = 100;
 			this.y = 200;
 			this.addAnimation("idle", [20]);
-			this.addAnimation("running", [0, 1, 2, 3, 4, 5, 6], 10);
+			this.addAnimation("running", [0, 1, 2, 3, 4, 5], 10);
 			this.addAnimation("walking", [14, 15, 16, 17, 18, 19], 10);
 			this.addAnimation("asc", [7, 8],1);
 			this.addAnimation("desc", [9,10],16);

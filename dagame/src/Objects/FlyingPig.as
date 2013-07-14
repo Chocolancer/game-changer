@@ -8,7 +8,7 @@ package Objects
 	public class FlyingPig extends IAG_Sprite
 	{
 		private var flyingLeft:Boolean = true;
-		private const FLY_TIME:Number = 3;
+		private const FLY_TIME:Number = 4;
 		private var flyingTimer:Number = FLY_TIME;
 		
 		
@@ -17,8 +17,7 @@ package Objects
 			//this.loadGraphic(GFX_Player, true, true, 92, 92);
 			this.x = x;
 			this.y = y;
-			//this.addAnimation("fly", [0]);
-			this.play("fly");
+			//this.addAnimation("fly", [0]); 
 			this.maxVelocity.x = 450;
 			
 			this.loadGraphic(Resources.GFX_FlyingPig, true, true,85,58);
@@ -43,12 +42,12 @@ package Objects
 			
 			if (flyingLeft)
 			{
-				this.velocity.x = -40;
+				this.velocity.x = -50;
 				this.facing = RIGHT;
 			}
 			else
 			{
-				this.velocity.x = 40;
+				this.velocity.x = 50;
 				this.facing = LEFT ;
 			}
 		}

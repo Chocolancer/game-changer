@@ -40,9 +40,9 @@ package States
 		}
 		override public function update():void
 		{
-			var mainstate:FlxState = new DiscoLevel();
+			 
 			if (FlxG.keys.any()) {
-				if (introImage.frame == 2) FlxG.switchState(mainstate);
+				if (introImage.frame == 2) FlxG.switchState(new Garbage());
 				introImage.frame = ((introImage.frame+1) % 3);
 					introImage.update();
 					textbox.text = szDialogues[introImage.frame];
