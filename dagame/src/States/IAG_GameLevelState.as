@@ -18,12 +18,15 @@ package States
 		protected var deathTimer:FlxTimer;
 		protected var handlingDeath:Boolean = false;
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
+		protected var checkPoints:Array = new Array();
+		protected var currectCheckPoint:uint = 0;
 		
-		protected var enemyGroup:FlxGroup = new FlxGroup(); 
-protected var enemyCollideGroup:FlxGroup = new FlxGroup(); 
+		public var enemyGroup:FlxGroup = new FlxGroup(); 
+		protected var enemyCollideGroup:FlxGroup = new FlxGroup(); 
+		
 		public function IAG_GameLevelState()
 		{
-	
+			checkPoints[0] = [ 100, 100 ];
 		}
 
 		override public function create():void
@@ -122,7 +125,7 @@ protected var enemyCollideGroup:FlxGroup = new FlxGroup();
 			camera.stopFX();
 			if (player.numberOfLives > 0)
 			{
-			player.reset(100, 100);
+			player.reset(checkPoints[currectCheckPoint][0], checkPoints[currectCheckPoint][1]);
 			handlingDeath = false;
 			}
 			else
