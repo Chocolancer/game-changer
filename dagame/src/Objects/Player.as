@@ -63,7 +63,7 @@ package Objects
 			
 			//TODO: This is where you enable player debugging
 			
-			debugMode = true;
+			debugMode = false;
 			
 			if (debugMode)
 			{

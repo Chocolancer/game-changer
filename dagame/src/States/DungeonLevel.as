@@ -85,7 +85,7 @@ package States
 		
 		private function endgameCallback(nothing:FlxObject, nothing2:FlxObject):void
 		{
-			FlxG.switchState(new Story_End());
+			FlxG.switchState(new DiscoLevel());
 		}
 		
 		private function checkPointCallback(nothing:FlxObject, nothing2:FlxObject):void

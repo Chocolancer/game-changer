@@ -28,6 +28,7 @@ package States
 			this.add(text_start);
 			this.add(text_credits);
 			
+			FlxG.playMusic(Resources.SND_Intro);
 		}
 		
 		override public function update():void 
