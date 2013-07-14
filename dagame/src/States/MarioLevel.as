@@ -15,8 +15,8 @@ package States
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(6, FlxObject.NONE);
 			tmap.setTileProperties(11, FlxObject.NONE, player.fall);
-		}
 		
+		}
 		override public function create():void 
 		{
 			super.create();		

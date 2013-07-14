@@ -26,7 +26,8 @@ package
 		[Embed(source = "/../tilemaps/tower.csv", mimeType = "application/octet-stream")] public static var TMAP_TowerMap:Class;
 		
 		//SPRITES
-		[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
+		//[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
+		[Embed(source = "/../assets/gameart/player.png")] public static var GFX_Player:Class;
 		[Embed(source = "/../assets/gameart/fireball.png")] public static var GFX_Fireball:Class;
 		
 		//OTHER ART

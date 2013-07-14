@@ -16,12 +16,14 @@ package States
 			//player.y = 10; temporary until set starting points are laid out for user.
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(3, FlxObject.NONE);
+			
+			
 		}
 		
 		override public function create():void 
 		{
 			super.create();
-			
+			player.x = 200;
 			//var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
 			//camera.follow(cameraFollow, FlxCamera.STYLE_PLATFORMER);
 		}
