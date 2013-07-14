@@ -12,6 +12,10 @@ package States
 		private var playedDiedReset:Boolean = false;
 		private var scissorGroup:FlxGroup = new FlxGroup();
 		
+		private var door:FlxSprite;
+		private var doorHitbox:FlxSprite;
+		
+		 
 		public function TowerLevel() 
 		{
 			tmap = new FlxTilemap();
@@ -56,6 +60,15 @@ package States
 			
 			enemyGroup.add(pig1);
 			
+			door = new FlxSprite(620, 80);
+			door.loadGraphic(Resources.GFX_Door);
+			door.addAnimation("idle", [0]);
+			door.play("idle");
+			this.add(door);
+			
+			doorHitbox = new FlxSprite(620, 80);
+			doorHitbox.makeGraphic(1, 1, 0x00dd0000);
+			this.add(doorHitbox);			
 		}
 		
 		override protected function respawnPlayer():void
@@ -66,7 +79,11 @@ package States
 		
 		override public function update():void 
 		{
-			super.update();
+			super.update();			
+			
+			FlxG.overlap(this.player, this.doorHitbox, exitDoorCallback);
+			
+			
 			spikesHitbox.velocity.y = -45;
 			
 			FlxG.overlap(this.player, this.spikesHitbox, playerEnemyCallback);
@@ -75,6 +92,44 @@ package States
 			{
 				scissorGroup.members[i].y = spikesHitbox.y + 20;
 			}
+		}
+		
+		private function exitDoorCallback(nothing:FlxObject,nothing2:FlxObject):void
+		{
+			FlxG.flash(0xffffffff, 1, exitDoorCallback2);
+		}
+		
+		private function exitDoorCallback2():void
+		{
+			FlxG.switchState(new DungeonLevel());
+		}
+		
+		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject):void
+		{
+			super.playerEnemyCallback(player, enemy);
+					handlePlayerSpikes(player, enemy);
+		}
+		
+		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject):void
+		{
+			var player:Player = playerObj as Player;
+			player.kill();
+			if (player.hasLives())
+			{
+				playedDiedReset = true; 
+				camera.shake(0.05, 0.5, afterDeathShake);
+			
+			}
+		}
+		
+		private function afterDeathShake():void
+		{
+			camera.flash();
+			player.reset(200, 3344);
+			player.x = 200;
+			player.y = 3344;
+			player.alive = true;
+			spikesHitbox.y = 3500;
 		}
 	}
 }
