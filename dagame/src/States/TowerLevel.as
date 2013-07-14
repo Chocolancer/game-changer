@@ -110,7 +110,7 @@ package States
 					handlePlayerSpikes(player, enemy);
 		}
 		
-		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject)
+		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject):void
 		{
 			var player:Player = playerObj as Player;
 			player.kill();

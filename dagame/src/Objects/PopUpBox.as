@@ -25,7 +25,7 @@ package Objects
 			timer.start(0.5, 1, TimerCallback);
 		}
 		
-		private function TimerCallback(Timer:FlxTimer)
+		private function TimerCallback(Timer:FlxTimer):void
 		{
 			spikes = new PopUpSpikes(this.x, this.y, this);
 			level.enemyGroup.add(spikes);
