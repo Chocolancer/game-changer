@@ -43,12 +43,12 @@ package States
 			this.add(poubelle);
 			poubelleLeftCol.x = 110;
 			poubelleLeftCol.y = 2210;
-			poubelleLeftCol.makeGraphic(5, 100, 0xffff0000); 
+			poubelleLeftCol.makeGraphic(5, 100, 0x00ff0000); 
 			poubelleLeftCol.immovable = true;
 			this.add(poubelleLeftCol);
 			poubelleRightCol.x = 255;
 			poubelleRightCol.y = 2210;
-			poubelleRightCol.makeGraphic(5, 100, 0xffff0000); 
+			poubelleRightCol.makeGraphic(5, 100, 0x00ff0000); 
 			poubelleRightCol.immovable = true;
 			this.add(poubelleRightCol);
 			

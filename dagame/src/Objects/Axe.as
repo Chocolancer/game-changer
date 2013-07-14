@@ -9,7 +9,9 @@ package Objects
 		private var moveLeft:Boolean;
 		public function Axe(x:Number,y:Number,moveLeft:Boolean) 
 		{
-			this.makeGraphic(32, 32, 0xffff0000);
+			this.loadGraphic(Resources.GFX_Axe, true, true, 72, 65);
+			this.addAnimation("idle", [0, 1, 2, 3, 4], 16);
+			this.play("idle");
 			this.x = x ;
 			this.y = y;
 			this.moveLeft = moveLeft;
@@ -20,11 +22,13 @@ package Objects
 			super.update();
 			if (moveLeft)
 			{
-				this.velocity.x = -100;
+				this.facing = LEFT;
+				this.velocity.x = -500;
 			}
 			else
 			{
-				this.velocity.x = 100;
+				this.facing = RIGHT;
+				this.velocity.x = 500;
 			}
 		}
 		 
