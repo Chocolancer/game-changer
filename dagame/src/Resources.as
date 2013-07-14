@@ -19,10 +19,10 @@ package
 		
 		//TILEMAPS
 		[Embed(source = "/../tilemaps/testmap.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
-		[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		//[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
-		[Embed(source = "/../tilemaps/dungeon.txt", mimeType = "application/octet-stream")] public static var TMAP_Dungeon:Class;
 		//[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+		[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+		[Embed(source = "/../tilemaps/dungeon.txt", mimeType = "application/octet-stream")] public static var TMAP_Dungeon:Class;
 		[Embed(source = "/../tilemaps/disco.csv", mimeType = "application/octet-stream")] public static var TMAP_DiscoMap:Class;
 		[Embed(source = "/../tilemaps/malio.csv", mimeType = "application/octet-stream")] public static var TMAP_MalioMap:Class;
 		[Embed(source = "/../tilemaps/paperscraps.csv", mimeType = "application/octet-stream")] public static var TMAP_PaperscrapsMap:Class;
@@ -44,6 +44,7 @@ package
 		[Embed(source="../assets/gameart/movingspikes.png")] public static var GFX_Movingspikes:Class;
 		[Embed(source="../assets/gameart/WhiteKnight.png")] public static var GFX_WhiteKnight:Class;
 		[Embed(source="../assets/gameart/checkpoint.png")] public static var GFX_Checkpoint:Class;
+		[Embed(source="../assets/gameart/axe.png")] public static var GFX_Axe:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 

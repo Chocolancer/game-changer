@@ -3,6 +3,7 @@ package States
 	import Objects.*;
 	import org.flixel.*;
 	import org.flixel.system.FlxTile;
+	import Objects.WhiteKnight;
 	/**
 	 * ...
 	 * @author Akari Nakashige
@@ -15,6 +16,7 @@ package States
 		private var checkpoint4:FlxSprite;
 		private var checkpoint5:FlxSprite;
 		private var cps:FlxGroup = new FlxGroup();
+		private var boss:WhiteKnight;
 		
 		public function DungeonLevel() 
 		{ 
@@ -61,6 +63,8 @@ package States
 			cps.add(checkpoint4);
 			cps.add(checkpoint5);
 			add(cps);
+			
+			boss = new WhiteKnight(this);
 		}
 		
 		override public function create():void 
@@ -74,6 +78,7 @@ package States
 		{
 			super.update();
 			FlxG.overlap(this.player, this.cps, checkPointCallback);
+			FlxG.overlap(this.player, this.boss, playerEnemyCallback);
 		}
 		
 		private function checkPointCallback(nothing:FlxObject, nothing2:FlxObject):void
@@ -128,5 +133,4 @@ package States
 			bringToLife(200, 3344);
 		}
 	}
-
 }

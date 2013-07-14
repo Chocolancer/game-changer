@@ -20,8 +20,6 @@ package States
 		{
 			tmap = new FlxTilemap();
 			tmap.loadMap(new Resources.TMAP_TowerMap, Resources.GFX_TowerTileSet, 32, 32);
-			//player.x = 50;
-			//player.y = 10; temporary until set starting points are laid out for user.
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(3, FlxObject.NONE);
 		}

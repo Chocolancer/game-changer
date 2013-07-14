@@ -2,34 +2,34 @@ package States
 {
 	import Objects.*;
 	import org.flixel.*;
+	import org.flixel.system.FlxTile;
 	
 	public class DiscoLevel extends IAG_GameLevelState 
 	{
 		
-		private var door:FlxSprite;
-		private var doorHitbox:FlxSprite;
+		private var exitDoor:FlxSprite = new FlxSprite();
 		private var partyPlayer: FlxSound;
+		private var stopShake: Boolean = false;
 		
 		public function DiscoLevel() 
 		{
 			tmap = new FlxTilemap();
 			tmap.loadMap(new Resources.TMAP_DiscoMap, Resources.GFX_DiscoTileSet, 32, 32);
 			tmap.setTileProperties(6, FlxObject.NONE);
+			tmap.setTileProperties(7, FlxObject.NONE, this.handleFall);
 		}
 		
 		override public function create():void 
 		{
 			super.create();
 			
-			door = new FlxSprite(3156, 176);
-			door.loadGraphic(Resources.GFX_Door);
-			door.addAnimation("idle", [0]);
-			door.play("idle");
-			this.add(door);
+			player.x = 80;
+			player.y = 80;
 			
-			doorHitbox = new FlxSprite(0, 3500);
-			doorHitbox.makeGraphic(1, 1, 0x00dd0000);
-			this.add(doorHitbox);
+			exitDoor.loadGraphic(Resources.GFX_Door, false, false);
+			exitDoor.x = 3156;
+			exitDoor.y = 176;
+			this.add(exitDoor);
 			
 			partyPlayer = new FlxSound();
 			partyPlayer.loadEmbedded(Resources.SND_Partyrock, true);
@@ -38,17 +38,43 @@ package States
 		
 		override public function update():void 
 		{
+			var num: int = FlxG.random() * 200;
+			
 			super.update();
-			FlxG.shake(0.010);
-			if (FlxG.elapsed % 2 == 0) {
+			
+			if (num == 100) {
+				camera.stopFX();
 				FlxG.flash();
 			}
-			FlxG.overlap(this.player, this.doorHitbox, handleDoor);
+			
+			if (!stopShake) {
+				FlxG.shake(0.010);
+			}
+			else {
+				camera.stopFX();
+			}
+			
+			FlxG.overlap(player, exitDoor, exitDoorCallback);
 		}
 		
-		private function handleDoor(playerObj:FlxObject, door:FlxObject):void
+		private function exitDoorCallback(nothing:FlxObject,nothing2:FlxObject):void
 		{
-			// FlxG.switchState(new BossState());
+			sound.loadEmbedded(Resources.SND_Nextlevel);
+			sound.play(true);
+			FlxG.flash(0xffffffff, 1, nextLevel);
+		}
+		
+		private function nextLevel():void
+		{
+			FlxG.switchState(new TowerLevel());
+		}
+		
+		private function handleFall(tile: FlxTile = null, target: Object = null): void {
+			if (target is Player)
+			{
+				stopShake = true;
+				onDeath();
+			}
 		}
 	}
 

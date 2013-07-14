@@ -15,6 +15,9 @@ package Objects
 		private var debugMode:Boolean = false;
 		
 		
+		private const AXE_RESET:Number = 1.0;
+		private var axeTimer:Number = 0;
+		
 		
 		private const AIR_VELOCITY:Number = 10;
 		
@@ -50,7 +53,8 @@ package Objects
 			this.addAnimation("running", [0, 1, 2, 3, 4, 5], 10);
 			this.addAnimation("walking", [14, 15, 16, 17, 18, 19], 10);
 			this.addAnimation("asc", [7, 8],1);
-			this.addAnimation("desc", [9,10],16);
+			this.addAnimation("desc", [9, 10], 16);
+			this.addAnimation("axe", [21]);
 			this.play("idle");
 			this.maxVelocity.x = 400;
 			this.maxVelocity.y = 1000;
@@ -123,19 +127,7 @@ package Objects
 				this.isInAir = true;
 			}
 			
-			if (FlxG.keys.justPressed("G"))
-			{
-				sound.loadEmbedded(Resources.SND_Throw);
-				sound.play(true);
-				if (isFacingForward)
-				{
-					game.addAxe(new Axe(this.x, this.y, false));
-				}
-				else
-				{
-					game.addAxe(new Axe(this.x, this.y, true));
-				}
-			}
+		
 			
 			if (FlxG.keys.A)
 			{
@@ -198,10 +190,10 @@ package Objects
 			
 			if (FlxG.keys.W)
 			{
+				sound.loadEmbedded(Resources.SND_Jump);
+				sound.play(true);
 				if (isJumping)
 				{
-					sound.loadEmbedded(Resources.SND_Jump);
-					sound.play(true);
 					this.velocity.y = -400;
 					if (this.isTouching(CEILING))
 					{
@@ -262,6 +254,34 @@ package Objects
 				}
 				
 			} 
+			
+			if (FlxG.keys.justPressed("SPACE"))
+			{
+				if (axeTimer <= 0)
+				{
+					sound.loadEmbedded(Resources.SND_Throw);
+					sound.play(true);
+					if (isFacingForward)
+					{
+						game.addAxe(new Axe(this.x, this.y, false));
+					}
+					else
+					{
+						game.addAxe(new Axe(this.x, this.y, true));
+					}
+					axeTimer = AXE_RESET;
+					play("axe");
+				} 
+				
+			}
+			
+			axeTimer -= FlxG.elapsed;
+			if (axeTimer <= 0)
+			{
+				axeTimer = 0;
+			}
+			
+			
 			if (debugMode)
 			{
 				playerinfo.text = "X : " + this.x + " Y : " + this.y;
