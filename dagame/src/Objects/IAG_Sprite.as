@@ -8,7 +8,7 @@ package Objects
 	 */
 	public class IAG_Sprite extends FlxSprite 
 	{
-		protected var isDying:Boolean = false;
+		public var isDead:Boolean = false;
 		
 		public function IAG_Sprite() 
 		{
@@ -19,26 +19,20 @@ package Objects
 		{
 			super.update();
 			
-			if (!this.alive && !this.isDying) {
+			if (!this.alive && !this.isDead) {
 				this.velocity.x = 0;
 				this.velocity.y = -500;
 				//change sprite
-				this.isDying = true;
+				this.isDead = true;
 			}
 			
-			if (this.isDying) {
+			if (this.isDead) {
 				this.velocity.y += 5;
 				if (this.velocity.y >= 700) {
 					this.kill();
-					this.isDying = false;
+					this.isDead = false;
 				}
 			}
-		}
-		
-		
-		
-		public function fall(tile: FlxTile = null, target: Object = null): void {
-			this.alive = false;
 		}
 	}
 

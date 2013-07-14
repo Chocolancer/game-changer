@@ -22,7 +22,6 @@ package Objects
 		public var isFacingForward:Boolean = false;
 		public var numberOfLives:int = 2;
 		public var jumpTimer:FlxTimer;
-		public var isDead:Boolean = false;
 		
 		public function hasLives():Boolean
 		{

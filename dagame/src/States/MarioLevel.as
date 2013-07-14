@@ -2,6 +2,7 @@ package States
 {
 	import Objects.*;
 	import org.flixel.*;
+	import org.flixel.system.FlxTile;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -16,7 +17,7 @@ package States
 			tmap.loadMap(new Resources.TMAP_MalioMap, Resources.GFX_MalioTileSet, 32, 32);
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(6, FlxObject.NONE);
-			tmap.setTileProperties(11, FlxObject.NONE, player.fall);
+			tmap.setTileProperties(11, FlxObject.NONE, this.handleFall);
 		
 		}
 		override public function create():void 
@@ -85,6 +86,12 @@ package States
 			super.playerEnemyCallback(player, enemy);
 			handlePlayerDeath(player, enemy);
 			return player;
+		}
+		
+		private function handleFall(tile: FlxTile= null, target: Object = null): void {
+			if (target is Player) {
+				handlePlayerDeath(target as FlxObject, tile);
+			}
 		}
 		
 		private function handlePlayerDeath(playerObj:FlxObject, spikes:FlxObject)
