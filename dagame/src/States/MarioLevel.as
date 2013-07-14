@@ -97,11 +97,11 @@ package States
 		private function handlePlayerDeath(playerObj:FlxObject, spikes:FlxObject)
 		{
 			var player:Player = playerObj as Player;
-			player.kill();
-			if (player.hasLives())
-			{ 
-				camera.shake(0.05, 0.5, afterDeathShake); 
-			}
+			player.alive = false;
+			//if (player.hasLives())
+			//{ 
+			//	camera.shake(0.05, 0.5, afterDeathShake); 
+			//}
 			
 		}
 		private function afterDeathShake():void
