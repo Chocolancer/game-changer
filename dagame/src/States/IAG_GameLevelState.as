@@ -128,7 +128,7 @@ package States
 			{
 				player.isDead = true;
 				player.Kill();
-				camera.shake(0, 0.5, respawnPlayer);
+				camera.shake(0.5, 0.5, respawnPlayer);
 			}
 		}
 		
@@ -151,7 +151,7 @@ package States
 			}
 			else
 			{
-				FlxG.switchState(new HUB());
+				FlxG.switchState(new GameOver());
 			}
 		}
 	}

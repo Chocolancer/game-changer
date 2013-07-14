@@ -273,8 +273,8 @@ package Objects
 			}
 		}
 		
-		private function UpdateDead():void {
-			velocity.y += 30;
+		private function UpdateDead():void
+		{
 			if (!isTouching(FLOOR))
 			{
 				//this doesnt work with sprites that are auto flipped - Alex
