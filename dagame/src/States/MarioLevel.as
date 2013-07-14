@@ -73,42 +73,19 @@ package States
 		
 		private function exitDoorCallback(nothing:FlxObject,nothing2:FlxObject):void
 		{
-			FlxG.flash(0xffffffff, 1, exitDoorCallback2);
+			FlxG.flash(0xffffffff, 1, nextLevel);
 		}
 		
-		private function exitDoorCallback2():void
+		private function nextLevel():void
 		{
 			FlxG.switchState(new TowerLevel());
 		}
 		
-		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
-		{
-			super.playerEnemyCallback(player, enemy);
-			handlePlayerDeath(player, enemy);
-			return player;
-		}
-		
 		private function handleFall(tile: FlxTile= null, target: Object = null): void {
-			if (target is Player) {
-				handlePlayerDeath(target as FlxObject, tile);
+			if (target is Player)
+			{
+				onDeath();
 			}
-		}
-		
-		private function handlePlayerDeath(playerObj:FlxObject, spikes:FlxObject)
-		{
-			var player:Player = playerObj as Player;
-			player.alive = false;
-			//if (player.hasLives())
-			//{ 
-			//	camera.shake(0.05, 0.5, afterDeathShake); 
-			//}
-			
-		}
-		private function afterDeathShake():void
-		{
-			camera.flash();
-			player.reset(120, 900); 
-			player.alive = true; 
 		}
 	}
 

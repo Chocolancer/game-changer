@@ -32,6 +32,8 @@ package States
 			camera.setBounds( 64, 0, 1350, 3760);
 			camera.follow(player);
 			FlxG.resetCameras(camera);
+			
+			
 			spikesHitbox = new FlxSprite(0, 3590);
 			spikesHitbox.makeGraphic(1400, 100, 0x00dd0000);
 			this.add(spikesHitbox);
@@ -49,49 +51,30 @@ package States
 				scissorGroup.add(scissor);
 			}
 			this.add(scissorGroup);
+			
 			var pig1:FlyingPig = new FlyingPig(721, 3000);
+			
 			enemyGroup.add(pig1);
+			
 		}
 		
+		override protected function respawnPlayer():void
+		{
+			spikesHitbox.y = 3600;
+			bringToLife(200, 3344);
+		}
 		
 		override public function update():void 
 		{
 			super.update();
 			spikesHitbox.velocity.y = -45;
-			FlxG.overlap(this.player, this.spikesHitbox, handlePlayerSpikes);
+			
+			FlxG.overlap(this.player, this.spikesHitbox, playerEnemyCallback);
+			
 			for (var i:Number = 0; i < scissorGroup.length; i++) 
 			{
 				scissorGroup.members[i].y = spikesHitbox.y + 20;
 			}
 		}
-		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
-		{
-			super.playerEnemyCallback(player, enemy);
-					handlePlayerSpikes(player, enemy);
-			return player;
-		}
-		
-		
-		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject)
-		{
-			var player:Player = playerObj as Player;
-			player.kill();
-			if (player.hasLives())
-			{
-				playedDiedReset = true; 
-				camera.shake(0.05, 0.5, afterDeathShake);
-			}
-		}
-		
-		private function afterDeathShake():void
-		{
-			camera.flash();
-			player.reset(200, 3344);
-			player.x = 200;
-			player.y = 3344;
-			player.alive = true;
-			spikesHitbox.y = 3500;
-		}
 	}
-
 }
