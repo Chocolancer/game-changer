@@ -82,7 +82,8 @@ package States
 		}
 		
 		private function handleFall(tile: FlxTile= null, target: Object = null): void {
-			if (target is Player) {
+			if (target is Player)
+			{
 				onDeath();
 			}
 		}
