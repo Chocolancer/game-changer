@@ -18,6 +18,8 @@ package States
 		protected var deathTimer:FlxTimer;
 		protected var handlingDeath:Boolean = false;
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
+		
+		protected var enemyGroup:FlxGroup = new FlxGroup();
 
 		public function IAG_GameLevelState()
 		{
@@ -49,6 +51,8 @@ package States
 			time_display.scrollFactor = new FlxPoint();
 			this.add(time_display);
 			camera.zoom = 2;
+			
+			this.add(enemyGroup);
 		}
 		
 		override public function update():void
@@ -67,7 +71,13 @@ package States
 			FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 			
+			FlxG.overlap(player,enemyGroup,  playerEnemyCallback);
 			
+		}
+		
+		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
+		{
+			player.kill();
 		}
 		
 		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void

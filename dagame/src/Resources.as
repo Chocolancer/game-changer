@@ -26,8 +26,12 @@ package
 		[Embed(source = "/../tilemaps/tower.csv", mimeType = "application/octet-stream")] public static var TMAP_TowerMap:Class;
 		
 		//SPRITES
-		[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
+		//[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
+		[Embed(source = "/../assets/gameart/player.png")] public static var GFX_Player:Class;
 		[Embed(source = "/../assets/gameart/fireball.png")] public static var GFX_Fireball:Class;
+		[Embed(source = "/../assets/gameart/door.png")] public static var GFX_Door:Class;
+		[Embed(source = "../assets/gameart/flyingpig.png")] public static var GFX_FlyingPig:Class
+		[Embed(source="../assets/gameart/scissors.png")] public static var GFX_Scissors:Class
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 

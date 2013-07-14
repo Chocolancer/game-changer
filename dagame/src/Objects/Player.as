@@ -1,6 +1,7 @@
 package Objects 
 {
 	import flash.display.GraphicsEndFill;
+	import flash.events.DRMAuthenticationCompleteEvent;
 	import org.flixel.*;
 	/**
 	 * ...
@@ -8,7 +9,12 @@ package Objects
 	 */
 	public class Player extends IAG_Sprite
 	{
-		[Embed(source = "/../assets/gameart/test_player.png")] public static var GFX_Player:Class;
+		private var playerinfo:FlxText;
+		private var debugMode:Boolean = false;
+		
+		
+		
+		private const AIR_VELOCITY:Number = 10;
 		
 		public var isInAir:Boolean = true;
 		public var isJumping:Boolean = false;
@@ -17,19 +23,45 @@ package Objects
 		public var numberOfLives:int = 2;
 		public var jumpTimer:FlxTimer;
 		public var isDead:Boolean = false;
+		
+		public function hasLives():Boolean
+		{
+			if (numberOfLives > 0)
+			{
+				return true;
+			}
+			return false;
+		}
 
 		public function Player() 
 		{
-			this.loadGraphic(GFX_Player, true, true, 92, 92);
+			this.loadGraphic(Resources.GFX_Player, true, true, 92, 89);
+			this.width = 40;
+			this.height = 80;
+			this.offset.x = 26;
+			this.offset.y = 0;
 			this.x = 100;
 			this.y = 200;
-			this.addAnimation("idle", [0]);
-			this.addAnimation("running", [0,1,2,3,4,5,6],10);
+			this.addAnimation("idle", [20]);
+			this.addAnimation("running", [0, 1, 2, 3, 4, 5, 6], 10);
+			this.addAnimation("walking", [14, 15, 16, 17, 18, 19], 10);
+			this.addAnimation("asc", [7, 8],1);
+			this.addAnimation("desc", [9,10],16);
 			this.play("idle");
 			this.maxVelocity.x = 400;
 			this.maxVelocity.y = 1000;
 			jumpTimer = new FlxTimer();
 			acceleration.y = 600;
+			
+			//TODO: This is where you enable player debugging
+			
+			debugMode = true;
+			
+			if (debugMode)
+			{
+				playerinfo = new FlxText(this.x - 20, this.y - 10, 150, "debug info");
+				
+			}
 		}
 		
 		
@@ -68,7 +100,7 @@ package Objects
 		private function UpdateAlive():void {
 			
 			super.update();
-			acceleration.y = 600;
+			acceleration.y = 3000;
 			
 			if (!this.alive && !this.exists) {
 				this.numberOfLives--;
@@ -92,17 +124,9 @@ package Objects
 				}
 				else
 				{
-					this.velocity.x -= 5;
+					this.velocity.x -= AIR_VELOCITY;
 				}
-				isFacingForward = false;
-				if (!this.isInAir)
-				{
-					this.play("running");
-				}
-				else
-				{
-					this.play("idle");
-				}
+				isFacingForward = false; 
 			}
 			else if (FlxG.keys.D)
 			{
@@ -112,17 +136,9 @@ package Objects
 				}
 				else
 				{
-					this.velocity.x += 5;
+					this.velocity.x += AIR_VELOCITY;
 				}
-				isFacingForward = true;
-				if (!this.isInAir)
-				{
-					this.play("running");
-				}
-				else
-				{
-					this.play("idle");
-				}
+				isFacingForward = true; 
 			}
 			else
 			{ 
@@ -139,8 +155,7 @@ package Objects
 					if (this.velocity.x < 0)
 					{
 						this.velocity.x = 0;
-					}
-					this.play("running");
+					} 
 				}
 				else if (this.velocity.x < 0)
 				{
@@ -155,13 +170,8 @@ package Objects
 					if (this.velocity.x > 0)
 					{
 						this.velocity.x = 0;
-					}
-					this.play("running");
-				}
-				else
-				{
-					this.play("idle");
-				}
+					} 
+				} 
 			}
 			
 			
@@ -169,19 +179,18 @@ package Objects
 			{
 				if (isJumping)
 				{
-					this.velocity.y = -300;
+					this.velocity.y = -400;
 					if (this.isTouching(CEILING))
 					{
 						isJumping = false;
-					}
+					} 
 				}
 				else if (!this.isInAir && !wasWDown)
 				{
-					this.velocity.y = -150;
-					this.play("idle");
+					this.velocity.y = 0;
 					this.isInAir = true;
 					this.isJumping = true;
-					this.jumpTimer.start(0.5, 1, JumpCallback);
+					this.jumpTimer.start(1, 1, JumpCallback);
 				}
 				this.wasWDown = true;
 			}
@@ -204,12 +213,54 @@ package Objects
 			{
 				Kill();
 			}
+			
+			
+			if (isInAir)
+			{
+				if (velocity.y < 0)
+				{
+					play("asc");
+				}
+				if (velocity.y > 0)
+				{
+					play("desc");
+				}
+			}
+			else
+			{
+				if ((velocity.x > 0.5)||(velocity.x < -0.5))
+				{
+					play("running");
+				}
+				else
+				{
+					play("idle");
+				}
+				
+			} 
+			if (debugMode)
+			{
+				playerinfo.text = "X : " + this.x + " Y : " + this.y;
+				playerinfo.x = this.x - 20;
+				playerinfo.y = this.y - 10;
+				playerinfo.update();
+			}
+		}
+		
+		override public function draw():void 
+		{
+			super.draw();
+			if (debugMode)
+			{
+				playerinfo.draw();
+			}
 		}
 		
 		private function UpdateDead():void {
 			if (!isTouching(FLOOR))
 			{
-				this.angle += 10;
+				//this doesnt work with sprites that are auto flipped - Alex
+				//this.angle += 10;
 			}
 		}
 		
