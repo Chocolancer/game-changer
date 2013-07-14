@@ -24,6 +24,11 @@ package Objects
 			this.loadGraphic(Resources.GFX_FlyingPig, true, true,85,58);
 			this.addAnimation("idle", [0, 1, 2, 3, 4, 5], 8);
 			this.play("idle");
+			
+			width = 65;
+			height = 30;
+			this.offset.x = 12;
+			this.offset.y = 12;
 		}
 		
 		override public function update():void 

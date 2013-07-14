@@ -89,6 +89,13 @@ package States
 			}
 		}
 		
+		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
+		{
+			super.playerEnemyCallback(player, enemy);
+					handlePlayerSpikes(player, enemy);
+			return player;
+		}
+		
 		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject)
 		{
 			var player:Player = playerObj as Player;

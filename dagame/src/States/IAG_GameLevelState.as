@@ -71,7 +71,13 @@ package States
 			FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 			
+			FlxG.overlap(player,enemyGroup,  playerEnemyCallback);
 			
+		}
+		
+		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
+		{
+			player.kill();
 		}
 		
 		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void
