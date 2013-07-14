@@ -12,6 +12,8 @@ package States
 		private var poubelleLeftCol:FlxSprite = new FlxSprite();
 		private var poubelleRightCol:FlxSprite = new FlxSprite();
 		private var computer:FlxSprite = new FlxSprite();
+		private var paper:FlxSprite = new FlxSprite();
+		private var starting:Boolean = true;
 		
 		private var isWarping:Boolean = false;
 		
@@ -23,7 +25,9 @@ package States
 		
 		override public function create():void 
 		{		
-		 	
+		 	paper.loadGraphic(Resources.GFX_PaperBall, false, false, 64, 64);
+			paper.x = 140;
+			paper.y = 224;
 			this.add(background);
 			background.scrollFactor.x = 0.5;
 			background.scrollFactor.y = 0.5;
@@ -35,8 +39,11 @@ package States
 			FlxG.worldBounds = new FlxRect( 14, 0, 5000, 3760);
 			camera = new CustCamera(0, 0, FlxG.width * 2, FlxG.height * 2, 1); 
 			camera.setBounds( 14, 0, 5000, 2560);
-			camera.follow(player);
+			camera.follow(paper);
 			FlxG.resetCameras(camera);
+			this.add(paper);
+			player.alive = false;
+			player.x = -140;
 			
 			poubelle.x = 100;
 			poubelle.y = 2110;
@@ -52,7 +59,7 @@ package States
 			poubelleRightCol.immovable = true;
 			this.add(poubelleRightCol);
 			
-			player.x = 140;
+			
 			
 			computer.loadGraphic(Resources.GFX_Computere, true, false, 351, 351);
 			computer.addAnimation("idle", [0, 1], 16);
@@ -65,13 +72,30 @@ package States
 		
 		override public function update():void 
 		{
-			super.update();
-			FlxG.collide(tmap, player);
-			FlxG.collide(poubelleLeftCol, player);
-			FlxG.collide(poubelleRightCol, player);
-			if (!isWarping)
+			if (starting)
 			{
-			FlxG.overlap(player, computer, computerOverlapCallback);
+				paper.y += 10;
+				paper.angle += 10;
+				if (paper.y == 2224)
+				{
+					starting = false;
+					paper.kill();
+					player.x = 140;
+					player.y = 2224;
+					camera.follow(player);
+					player.alive = true;
+				}
+			}
+			else
+			{
+				super.update();
+				FlxG.collide(tmap, player);
+				FlxG.collide(poubelleLeftCol, player);
+				FlxG.collide(poubelleRightCol, player);
+				if (!isWarping)
+				{
+					FlxG.overlap(player, computer, computerOverlapCallback);
+				}
 			}
 		}
 		

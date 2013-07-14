@@ -17,12 +17,13 @@ package Objects
 		
 		public function WhiteKnight(gameRef:IAG_GameLevelState):void
 		{
-			this.x = 100;
-			this.y = 200;
+			this.x = 7765;
+			this.y = 1220;
 			axeTimer = new FlxTimer();
 			loadGraphic(Resources.GFX_WhiteKnight, true, true, 92, 92);
-			this.addAnimation("fly", [0]);
-			this.play("fly");
+			this.addAnimation("idle", [0]);
+			this.play("idle");
+			facing = LEFT;
 			this.maxVelocity.x = 450;
 			hitpoints = 20;
 			game = gameRef;
@@ -30,7 +31,6 @@ package Objects
 		
 		override public function update():void 
 		{
-			axeTimer.start(FlxMath.rand(1, 5), 1, AxeCallBack);
 		}
 		
 		public function Kill():void
@@ -39,7 +39,7 @@ package Objects
 			sound.play(true);
 		}
 		
-		private function AxeCallBack(Timer:FlxTimer):void {
+		private function axeCallBack(Timer:FlxTimer):void {
 			game.addAxe(new Axe(x, y, false));
 		}
 	}

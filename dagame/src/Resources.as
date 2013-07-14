@@ -46,6 +46,7 @@ package
 		[Embed(source="../assets/gameart/checkpoint.png")] public static var GFX_Checkpoint:Class;
 		[Embed(source = "../assets/gameart/axe.png")] public static var GFX_Axe:Class;
 		[Embed(source="../assets/gameart/titleScreen.png")] public static var GFX_TitleScreen:Class;
+		[Embed(source="../assets/gameart/paperball.png")] public static var GFX_PaperBall:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
@@ -60,5 +61,6 @@ package
 		[Embed(source = "/../assets/sounds/enemydie.mp3")] public static var SND_Enemydie:Class; 
 		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class;
 		[Embed(source = "/../assets/sounds/Tower 1.mp3")] public static var SND_TowerLevel:Class;
+		[Embed(source = "/../assets/sounds/Mario Level 1.mp3")] public static var SND_MarioLevel:Class;
 	}
 }
