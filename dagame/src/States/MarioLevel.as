@@ -93,6 +93,8 @@ package States
 			exitDoor.x = 5451;
 			exitDoor.y = 668;
 			this.add(exitDoor);
+			
+			FlxG.playMusic(Resources.SND_MarioLevel);
 		}
 		
 		override public function update():void 

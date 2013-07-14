@@ -8,14 +8,14 @@ package States
 	 * ...
 	 * @author Akari Nakashige
 	 */
-	public class Story_Intro extends IAG_State 
+	public class Story_End extends IAG_State 
 	{
-		public function Story_Intro() 
+		public function Story_End() 
 		{
 			super();	
 		}
 		override public function create():void {	
-			var introImage:FlxSprite = new FlxSprite(0, 0, Resources.GFX_THE_START);
+			var introImage:FlxSprite = new FlxSprite(0, 0, Resources.GFX_THE_END);
 			add(introImage);
 			
 			var textbox:FlxText = new FlxText( 100, 340, 400, "Your game is over, but sales are just beginning!");
