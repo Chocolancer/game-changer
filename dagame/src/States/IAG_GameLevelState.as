@@ -15,18 +15,11 @@ package States
 		protected var camera:CustCamera;
 		protected var life_display:FlxText;
 		protected var time_display:FlxText;
-		protected var timer:FlxTimer;
-		protected var deathTimer:FlxTimer;
-		protected var handlingDeath:Boolean = false;
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
+		protected var timer:FlxTimer;
 		
 		protected var enemyGroup:FlxGroup = new FlxGroup();
 		protected var enemyCollideGroup:FlxGroup = new FlxGroup();
-		
-		public function IAG_GameLevelState()
-		{
-		
-		}
 		
 		override public function create():void
 		{
@@ -47,19 +40,19 @@ package States
 			life_display.scale = new FlxPoint(4, 4);
 			life_display.scrollFactor = new FlxPoint();
 			this.add(life_display);
-			timer = new FlxTimer();
-			deathTimer = new FlxTimer();
-			timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
 			
 			time_display = new FlxText(0, 40, 100, "Time: " + TIME_TO_COMPLETE_LEVEL_SECONDS);
 			time_display.origin = new FlxPoint(0, 0);
 			time_display.scale = new FlxPoint(4, 4);
 			time_display.scrollFactor = new FlxPoint();
 			this.add(time_display);
+			
+			timer = new FlxTimer();
+			timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
+			
 			camera.zoom = 2;
 			
 			this.add(enemyGroup);
-			
 			camera.flash(0xff000000);
 		}
 		
@@ -70,13 +63,8 @@ package States
 			{
 				FlxG.collide(tmap, player, PlayerTouchDown);
 			}
-			else if (!handlingDeath)
-			{
-				deathTimer.start(4, 1, DeathReset)
-				handlingDeath = true;
-			}
+			
 			life_display.text = "Lives: " + player.numberOfLives;
-			//FlxG.collide(tmap, player, PlayerTouchDown);
 			camera.alignCamera();
 			
 			FlxG.overlap(player, enemyGroup, playerEnemyCallback);
@@ -84,9 +72,9 @@ package States
 		
 		}
 		
-		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
+		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject):void
 		{
-			player.kill();
+			onDeath();
 		}
 		
 		public function PlayerTouchDown(tmap:FlxTilemap, player:Player):void
@@ -98,12 +86,12 @@ package States
 		{
 			if (timer.loopsLeft == 0)
 			{
-				player.Kill();
-				
-				player.alive = false;
+				// kill the player when time runs out
+				onDeath();
 			}
 			else
 			{
+				// update the timer
 				this.remove(time_display);
 				time_display = new FlxText(0, 40, 100, "Time: " + timer.loopsLeft);
 				time_display.origin = new FlxPoint(0, 0);
@@ -113,9 +101,10 @@ package States
 			}
 		}
 		
-		private function DeathReset(timer:FlxTimer):void
+		private function onDeath():void
 		{
-			camera.fade(0xff000000, 1, bringToLife);
+			player.Kill();
+			bringToLife();
 		}
 		
 		private function bringToLife():void
@@ -123,8 +112,11 @@ package States
 			camera.stopFX();
 			if (player.numberOfLives > 0)
 			{
+				player.isDead = false;
 				player.reset(100, 100);
-				handlingDeath = false;
+				timer.destroy();
+				timer = new FlxTimer();
+				timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
 			}
 			else
 			{
