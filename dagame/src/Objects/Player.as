@@ -3,6 +3,7 @@ package Objects
 	import flash.display.GraphicsEndFill;
 	import flash.events.DRMAuthenticationCompleteEvent;
 	import org.flixel.*;
+	import States.IAG_GameLevelState;
 	/**
 	 * ...
 	 * @author Akari Nakashige
@@ -10,6 +11,7 @@ package Objects
 	public class Player extends IAG_Sprite
 	{
 		private var playerinfo:FlxText;
+		private var sound: FlxSound = new FlxSound();
 		private var debugMode:Boolean = false;
 		
 		
@@ -23,6 +25,8 @@ package Objects
 		public var numberOfLives:int = 10;
 		public var jumpTimer:FlxTimer;
 		
+		private var game:IAG_GameLevelState;
+		
 		public function hasLives():Boolean
 		{
 			if (numberOfLives > 0)
@@ -32,8 +36,9 @@ package Objects
 			return false;
 		}
 
-		public function Player() 
+		public function Player(gameRef:IAG_GameLevelState) 
 		{
+			game = gameRef;
 			this.loadGraphic(Resources.GFX_Player, true, true, 92, 89);
 			this.width = 40;
 			this.height = 80;
@@ -91,10 +96,12 @@ package Objects
 		}
 		
 		public function Kill():void {
+			sound.loadEmbedded(Resources.SND_Playerdie);
+			sound.play(true);
 			this.isDead = true;
 			this.play("idle");
 			this.numberOfLives--;
-			this.velocity.y = -500;
+			this.velocity.y = -750;
 		}
 		
 		private function UpdateAlive():void {
@@ -114,6 +121,20 @@ package Objects
 			if (!this.isTouching(FLOOR))
 			{
 				this.isInAir = true;
+			}
+			
+			if (FlxG.keys.justPressed("G"))
+			{
+				sound.loadEmbedded(Resources.SND_Throw);
+				sound.play(true);
+				if (isFacingForward)
+				{
+					game.addAxe(new Axe(this.x, this.y, false));
+				}
+				else
+				{
+					game.addAxe(new Axe(this.x, this.y, true));
+				}
 			}
 			
 			if (FlxG.keys.A)
@@ -179,6 +200,8 @@ package Objects
 			{
 				if (isJumping)
 				{
+					sound.loadEmbedded(Resources.SND_Jump);
+					sound.play(true);
 					this.velocity.y = -400;
 					if (this.isTouching(CEILING))
 					{
@@ -257,7 +280,8 @@ package Objects
 			}
 		}
 		
-		private function UpdateDead():void {
+		private function UpdateDead():void
+		{
 			if (!isTouching(FLOOR))
 			{
 				//this doesnt work with sprites that are auto flipped - Alex

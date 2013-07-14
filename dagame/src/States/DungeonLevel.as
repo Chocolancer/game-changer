@@ -101,10 +101,7 @@ package States
 		private function afterDeathShake():void
 		{
 			camera.flash();
-			player.reset(200, 3344);
-			player.x = checkPoints[currectCheckPoint][0];
-			player.y = checkPoints[currectCheckPoint][1];
-			player.alive = true;
+			bringToLife(200, 3344);
 		}
 	}
 
