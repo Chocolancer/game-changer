@@ -190,8 +190,6 @@ package Objects
 			
 			if (FlxG.keys.W)
 			{
-				sound.loadEmbedded(Resources.SND_Jump);
-				sound.play(true);
 				if (isJumping)
 				{
 					this.velocity.y = -400;
@@ -202,6 +200,8 @@ package Objects
 				}
 				else if (!this.isInAir && !wasWDown)
 				{
+					sound.loadEmbedded(Resources.SND_Jump);
+					sound.play(true);
 					this.velocity.y = 0;
 					this.isInAir = true;
 					this.isJumping = true;

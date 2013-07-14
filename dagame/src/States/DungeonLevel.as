@@ -4,6 +4,7 @@ package States
 	import org.flixel.*;
 	import org.flixel.system.FlxTile;
 	import Objects.WhiteKnight;
+	import States.*;
 	/**
 	 * ...
 	 * @author Akari Nakashige
@@ -65,6 +66,7 @@ package States
 			add(cps);
 			
 			boss = new WhiteKnight(this);
+			add(boss);
 		}
 		
 		override public function create():void 
@@ -78,7 +80,12 @@ package States
 		{
 			super.update();
 			FlxG.overlap(this.player, this.cps, checkPointCallback);
-			FlxG.overlap(this.player, this.boss, playerEnemyCallback);
+			FlxG.overlap(this.player, this.boss, endgameCallback);
+		}
+		
+		private function endgameCallback(nothing:FlxObject, nothing2:FlxObject):void
+		{
+			FlxG.switchState(new Story_End());
 		}
 		
 		private function checkPointCallback(nothing:FlxObject, nothing2:FlxObject):void
