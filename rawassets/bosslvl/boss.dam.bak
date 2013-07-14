@@ -2,51 +2,24 @@
 <project>
   <version>3.1.3</version>
   <bgColor>0x777777</bgColor>
-  <viewPos x="59" y="175"/>
+  <viewPos x="-329" y="-19"/>
   <firstLayersTop>false</firstLayersTop>
-  <spriteEntries currentId="1"/>
+  <spriteEntries currentId="1" selected="true"/>
   <layers>
     <group name="Group1" id="7" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
       <maplayer name="Map1" id="8" xScroll="1" yScroll="1" x="0" y="0" width="32" height="12" tileset="../../dagame/assets/tiles/AbdonTiles.png" tileWidth="32" tileHeight="32" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="32" tileSpacingY="32" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" sharesTileProps="true" selected="true">
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,49</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,0,14,15,0,0,0,0,0,0,0,57</row>
-        <row>49,0,0,0,0,0,0,24,0,0,0,0,0,0,0,24,0,0,0,0,0,14,15,14,15,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,49</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,15,0,0,0,0,0,0,0,57</row>
+        <row>49,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,15,14,15,0,0,0,0,0,0,57</row>
         <row>43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,43,40,40,40,40,40,40,40,40,40,40,40,40,40,57</row>
-        <tileProperties>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-          <properties/>
-        </tileProperties>
       </maplayer>
     </group>
   </layers>
@@ -72,7 +45,7 @@
       <rows/>
     </specialConnections>
   </tileMatrix>
-  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../../dagame/assets/tiles/AbdonTiles.png">
+  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../../dagame/assets/gameart/hub_tiles.png">
     <tiles>0,0,0,0,0,0,0,0,0</tiles>
   </tileMatrixData>
   <tileBrushes/>
@@ -122,7 +95,7 @@
   </options>
   <exporter name="C:\Program Files (x86)\DAME\lua\Exporters\csvTilemap.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="false" useProjectExporterOnly="false">
     <setting name="FileExt">csv</setting>
-    <setting name="CSVDir">C:\Users\Cimreau\Desktop\TechPro2\dagame\tilemaps</setting>
+    <setting name="CSVDir"/>
   </exporter>
   <customPropertyTypes/>
   <guides>
