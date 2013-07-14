@@ -9,7 +9,7 @@ package States
 	 */
 	public class IAG_GameLevelState extends IAG_State 
 	{
-		protected var player:Player = new Player();
+		protected var player:Player;
 		protected var tmap:FlxTilemap;
 		protected var camera:CustCamera;
 		protected var life_display:FlxText;
@@ -20,7 +20,9 @@ package States
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
 		
 		protected var enemyGroup:FlxGroup = new FlxGroup(); 
-protected var enemyCollideGroup:FlxGroup = new FlxGroup(); 
+		protected var enemyCollideGroup:FlxGroup = new FlxGroup(); 
+		protected var axeGroup:FlxGroup = new FlxGroup();
+		
 		public function IAG_GameLevelState()
 		{
 	
@@ -30,7 +32,7 @@ protected var enemyCollideGroup:FlxGroup = new FlxGroup();
 		{
 			super.create();
 			this.add(tmap);
-			player = new Player();			
+			player = new Player(this);			
 			this.add(player); 
 			
 			FlxG.worldBounds = new FlxRect( 0, 0, 10000, 10000);
@@ -57,8 +59,13 @@ protected var enemyCollideGroup:FlxGroup = new FlxGroup();
 			camera.zoom = 2;
 			
 			this.add(enemyGroup);
-			
+			this.add(axeGroup);
 			camera.flash(0xff000000);
+		}
+		
+		public function addAxe(axe:Axe)
+		{
+			axeGroup.add(axe);
 		}
 		
 		override public function update():void
@@ -78,11 +85,15 @@ protected var enemyCollideGroup:FlxGroup = new FlxGroup();
 			camera.alignCamera();
 			
 			FlxG.overlap(player, enemyGroup,  playerEnemyCallback);
-			FlxG.collide(enemyCollideGroup, tmap);
-			
+			FlxG.collide(enemyCollideGroup, tmap); 
+			FlxG.overlap(axeGroup, enemyGroup, axeEnemyCallback);
 		}
 		
-		 
+		private function axeEnemyCallback(axe:FlxObject,enem:FlxObject):void
+		{
+			axe.kill();
+			enem.kill();
+		}
 		
 		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
 		{

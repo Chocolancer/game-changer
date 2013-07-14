@@ -3,6 +3,7 @@ package Objects
 	import flash.display.GraphicsEndFill;
 	import flash.events.DRMAuthenticationCompleteEvent;
 	import org.flixel.*;
+	import States.IAG_GameLevelState;
 	/**
 	 * ...
 	 * @author Akari Nakashige
@@ -23,6 +24,8 @@ package Objects
 		public var numberOfLives:int = 2;
 		public var jumpTimer:FlxTimer;
 		
+		private var game:IAG_GameLevelState;
+		
 		public function hasLives():Boolean
 		{
 			if (numberOfLives > 0)
@@ -32,8 +35,9 @@ package Objects
 			return false;
 		}
 
-		public function Player() 
+		public function Player(gameRef:IAG_GameLevelState) 
 		{
+			game = gameRef;
 			this.loadGraphic(Resources.GFX_Player, true, true, 92, 89);
 			this.width = 40;
 			this.height = 80;
@@ -113,6 +117,18 @@ package Objects
 			if (!this.isTouching(FLOOR))
 			{
 				this.isInAir = true;
+			}
+			
+			if (FlxG.keys.justPressed("G"))
+			{
+				if (isFacingForward)
+				{
+				game.addAxe(new Axe(this.x, this.y, false));
+				}
+				else
+				{
+					game.addAxe(new Axe(this.x, this.y, true));
+				}
 			}
 			
 			if (FlxG.keys.A)
