@@ -49,10 +49,7 @@ package
 		[Embed(source = "/../assets/sounds/throw.mp3")] public static var SND_Throw:Class; 
 		[Embed(source = "/../assets/sounds/playerdie.mp3")] public static var SND_Playerdie:Class; 
 		[Embed(source = "/../assets/sounds/enemydie.mp3")] public static var SND_Enemydie:Class; 
-		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class; 
-		public function Resources() 
-		{
-			
-		}
+		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class;
+		[Embed(source = "/../assets/sounds/Tower 1.mp3")] public static var SND_TowerLevel:Class;
 	}
 }
