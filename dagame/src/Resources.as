@@ -46,6 +46,7 @@ package
 		[Embed(source="../assets/gameart/checkpoint.png")] public static var GFX_Checkpoint:Class;
 		[Embed(source = "../assets/gameart/axe.png")] public static var GFX_Axe:Class;
 		[Embed(source="../assets/gameart/titleScreen.png")] public static var GFX_TitleScreen:Class;
+		[Embed(source="../assets/gameart/paperball.png")] public static var GFX_PaperBall:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
