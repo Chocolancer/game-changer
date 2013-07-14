@@ -187,10 +187,10 @@ package Objects
 				}
 				else if (!this.isInAir && !wasWDown)
 				{
-					this.velocity.y = 0; 
+					this.velocity.y = 0;
 					this.isInAir = true;
 					this.isJumping = true;
-					this.jumpTimer.start(1.0, 1, JumpCallback);
+					this.jumpTimer.start(1, 1, JumpCallback);
 				}
 				this.wasWDown = true;
 			}
