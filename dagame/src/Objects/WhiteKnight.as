@@ -13,13 +13,14 @@ package Objects
 		var axeTimer:FlxTimer;
 		var hitpoints:int;
 		private var game:IAG_GameLevelState;
+		private var sound:FlxSound = new FlxSound();
 		
 		public function WhiteKnight(gameRef:IAG_GameLevelState):void
 		{
 			this.x = 100;
 			this.y = 200;
 			axeTimer = new FlxTimer();
-			loadGraphic(GFX_Player, true, true, 92, 92);
+			loadGraphic(Resources.GFX_WhiteKnight, true, true, 92, 92);
 			this.addAnimation("fly", [0]);
 			this.play("fly");
 			this.maxVelocity.x = 450;
