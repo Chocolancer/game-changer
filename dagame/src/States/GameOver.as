@@ -10,6 +10,7 @@ package States
 		
 		
 		private var text:FlxText = new FlxText(100, 100, 600, "GAME OVER");
+		private var text2:FlxText = new FlxText(100, 200, 600, "Press Space To Continue");
 		
 		public function GameOver() 
 		{
@@ -20,13 +21,16 @@ package States
 		{
 			super.create();
 			this.add(text);
+			this.add(text2);
 		}
 		
 		override public function update():void 
 		{
 			super.update();
 			
-			if (FlxG.keys.any)
+			
+			
+			if (FlxG.keys.SPACE)
 			{
 				FlxG.switchState(new Story_Intro());
 			}
