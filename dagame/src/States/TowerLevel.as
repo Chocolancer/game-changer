@@ -65,6 +65,9 @@ package States
 			}
 			this.add(scissorGroup);
 			
+			var pig1:FlyingPig = new FlyingPig(721, 3000);
+			
+			enemyGroup.add(pig1);
 			
 		}
 		

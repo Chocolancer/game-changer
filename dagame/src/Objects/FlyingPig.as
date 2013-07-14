@@ -21,7 +21,7 @@ package Objects
 			this.play("fly");
 			this.maxVelocity.x = 450;
 			
-			this.loadGraphic(Resources.GFX_FlyingPig, true, true);
+			this.loadGraphic(Resources.GFX_FlyingPig, true, true,85,58);
 			this.addAnimation("idle", [0, 1, 2, 3, 4, 5], 8);
 			this.play("idle");
 		}
@@ -38,11 +38,13 @@ package Objects
 			
 			if (flyingLeft)
 			{
-				this.velocity.x = -20;
+				this.velocity.x = -40;
+				this.facing = RIGHT;
 			}
 			else
 			{
-				this.velocity.x = 20;
+				this.velocity.x = 40;
+				this.facing = LEFT ;
 			}
 		}
 		
