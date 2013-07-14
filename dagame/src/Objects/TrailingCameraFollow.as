@@ -7,10 +7,10 @@ package Objects
 		
 		public function TrailingCameraFollow(map:FlxTilemap) 
 		{
-			 this.x = FlxG.width / 2;
-			 this.y = map.getBounds().bottom;
-			 this.visible = false;
-			 this.maxVelocity.y = -30;
+			var mapRect: FlxRect = map.getBounds();
+			 this.x = 50
+			 this.y = mapRect.bottom - 100;
+			 this.visible = true;
 		}
 		
 		override public function update():void 
@@ -18,7 +18,7 @@ package Objects
 			super.update();
 			
 			if (FlxG.elapsed % 5 == 0) {
-				this.velocity.y -= 3;
+				this.velocity.y -= 500;
 			}
 		}
 	}

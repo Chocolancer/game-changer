@@ -22,8 +22,8 @@ package States
 		{
 			super.create();
 			
-			var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
-			camera.follow(cameraFollow, FlxCamera.STYLE_PLATFORMER);
+			//var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
+			//camera.follow(cameraFollow, FlxCamera.STYLE_PLATFORMER);
 		}
 	}
 
