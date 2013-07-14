@@ -14,7 +14,7 @@ package Objects
 		
 		
 		
-		private const AIR_VELOCITY:Number = 10;
+		private const AIR_VELOCITY_X:Number = 10;
 		
 		public var isInAir:Boolean = true;
 		public var isJumping:Boolean = false;
@@ -53,8 +53,7 @@ package Objects
 			jumpTimer = new FlxTimer();
 			acceleration.y = 600;
 			
-			//TODO: This is where you enable player debugging
-			
+			//TODO: This is where you enable player debugging 
 			debugMode = true;
 			
 			if (debugMode)
@@ -63,6 +62,7 @@ package Objects
 				
 			}
 		}
+		
 		
 		
 		override public function update():void 
@@ -124,7 +124,7 @@ package Objects
 				}
 				else
 				{
-					this.velocity.x -= AIR_VELOCITY;
+					this.velocity.x -= AIR_VELOCITY_X;
 				}
 				isFacingForward = false; 
 			}
@@ -136,7 +136,7 @@ package Objects
 				}
 				else
 				{
-					this.velocity.x += AIR_VELOCITY;
+					this.velocity.x += AIR_VELOCITY_X;
 				}
 				isFacingForward = true; 
 			}
@@ -173,8 +173,6 @@ package Objects
 					} 
 				} 
 			}
-			
-			
 			if (FlxG.keys.W)
 			{
 				if (isJumping)
@@ -184,20 +182,21 @@ package Objects
 					{
 						isJumping = false;
 					} 
+				
 				}
 				else if (!this.isInAir && !wasWDown)
 				{
 					this.velocity.y = 0; 
 					this.isInAir = true;
 					this.isJumping = true;
-					this.jumpTimer.start(1.0, 1, JumpCallback);
+					this.jumpTimer.start(0.8, 1, JumpCallback);
 				}
 				this.wasWDown = true;
 			}
 			else
 			{
 				this.isJumping = false;
-				this.wasWDown = false;
+				this.wasWDown = false; 
 			}
 			
 			if (this.isFacingForward)

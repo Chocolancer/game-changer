@@ -29,6 +29,8 @@ package
 		//[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
 		[Embed(source = "/../assets/gameart/player.png")] public static var GFX_Player:Class;
 		[Embed(source = "/../assets/gameart/fireball.png")] public static var GFX_Fireball:Class;
+		[Embed(source="../assets/gameart/scissors.png")] public static var GFX_Scissors:Class;
+		[Embed(source="../assets/gameart/flyingpig.png")] public static var GFX_FlyingPig:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 

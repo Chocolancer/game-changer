@@ -4,11 +4,20 @@ package States
 	import org.flixel.*;
 	/**
 	 * ...
-	 * @author Jason Bolanos & Matt Fisher
+	 * @author Jason Bolanos & Matt Fisher & The guy who cant do collisions
 	 */
 	public class TowerLevel extends IAG_GameLevelState 
 	{
 		private var spikesHitbox:FlxSprite;
+		
+		
+		private var playedDiedReset:Boolean = false;
+		
+		
+		private var scissorGroup:FlxGroup = new FlxGroup();
+		
+		 
+		
 		
 		
 		public function TowerLevel() 
@@ -20,8 +29,8 @@ package States
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(3, FlxObject.NONE);
 			
+
 			
-	
 		}
 		
 		override public function create():void 
@@ -37,24 +46,66 @@ package States
 			
 			
 			spikesHitbox = new FlxSprite(0, 3500);
-			spikesHitbox.makeGraphic(1400, 100, 0x88dd0000);
+			spikesHitbox.makeGraphic(1400, 100, 0x00dd0000);
 			this.add(spikesHitbox);
 			//var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
 			//camera.follow(cameraFollow, FlxCamera.STYLE_PLATFORMER);
+						
+			for (var i:int = 0; i < 8; i++)
+			{
+				var scissor:FlxSprite = new FlxSprite(160 * (i + 1), 3344);
+				 
+				scissor.loadGraphic( Resources.GFX_Scissors, true, false, 75, 144);
+			
+				scissor.addAnimation("idle", [0, 1, 2], 8);
+				scissor.play("idle");
+				scissor.scale.x = 2;
+				scissor.scale.y = 2;
+				scissorGroup.add(scissor);
+			}
+			this.add(scissorGroup);
+			
+			
 		}
 		
 		
 		override public function update():void 
 		{
 			super.update();
-			spikesHitbox.velocity.y = -15;
+			
+			
+			
+			
+			spikesHitbox.velocity.y = -35;
 			
 			FlxG.overlap(this.player, this.spikesHitbox, handlePlayerSpikes);
+			
+			for (var i:Number = 0; i < scissorGroup.length; i++) 
+			{
+				scissorGroup.members[i].y = spikesHitbox.y + 20;
+			}
 		}
 		
-		private function handlePlayerSpikes(player:FlxObject, spikes:FlxObject)
+		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject)
 		{
+			var player:Player = playerObj as Player;
 			player.kill();
+			if (player.hasLives())
+			{
+				playedDiedReset = true; 
+				camera.shake(0.05, 0.5, afterDeathShake);
+			
+			}
+		}
+		
+		private function afterDeathShake():void
+		{
+			camera.flash();
+			player.reset(200, 3344);
+			player.x = 200;
+			player.y = 3344;
+			player.alive = true;
+			spikesHitbox.y = 3500;
 		}
 	}
 
