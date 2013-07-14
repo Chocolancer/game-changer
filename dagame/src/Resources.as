@@ -15,22 +15,19 @@ package
 		[Embed(source = "/../assets/tiles/paperscraps.png")] public static var GFX_PaperscrapsTileSet:Class;
 		[Embed(source = "/../assets/tiles/tower.png")] public static var GFX_TowerTileSet:Class;
 		[Embed(source = "/../assets/gameart/hub_tiles.png")] public static var GFX_TSET_HUBTiles:Class; 
+		[Embed(source = "/../assets/tiles/AbdonTiles.png")] public static var GFX_TSET_Boss:Class; 
 		
 		//TILEMAPS
-<<<<<<< HEAD
 		[Embed(source = "/../tilemaps/testmap.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
 		[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		//[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
-=======
 		[Embed(source = "/../tilemaps/dungeon.txt", mimeType = "application/octet-stream")] public static var TMAP_Dungeon:Class;
 		//[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
-		[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
->>>>>>> f30276c61b02f2f540f1df7855fe4ef61f204f9b
 		[Embed(source = "/../tilemaps/disco.csv", mimeType = "application/octet-stream")] public static var TMAP_DiscoMap:Class;
 		[Embed(source = "/../tilemaps/malio.csv", mimeType = "application/octet-stream")] public static var TMAP_MalioMap:Class;
 		[Embed(source = "/../tilemaps/paperscraps.csv", mimeType = "application/octet-stream")] public static var TMAP_PaperscrapsMap:Class;
 		[Embed(source = "/../tilemaps/tower.csv", mimeType = "application/octet-stream")] public static var TMAP_TowerMap:Class;
-		[Embed(source = "/../tilemaps/boss.csv", mimeType = "application/octet-stream")] public static var TMAP_BossMap:Class;
+		[Embed(source = "/../tilemaps/boss.txt", mimeType = "application/octet-stream")] public static var TMAP_BossMap:Class;
 		
 
 		//SPRITES
@@ -46,6 +43,7 @@ package
 		[Embed(source="../assets/gameart/trashcan.png")] public static var GFX_Trashcan:Class;
 		[Embed(source="../assets/gameart/movingspikes.png")] public static var GFX_Movingspikes:Class;
 		[Embed(source="../assets/gameart/WhiteKnight.png")] public static var GFX_WhiteKnight:Class;
+		[Embed(source="../assets/gameart/checkpoint.png")] public static var GFX_Checkpoint:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 

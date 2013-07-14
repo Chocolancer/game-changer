@@ -30,11 +30,31 @@ package States
 			this.checkPoints[3] = [ 2650, 1328];
 			this.checkPoints[4] = [ 4960, 336];
 			this.checkPoints[5] = [ 7105, 1230];
-			checkpoint1 = new FlxSprite(1950, 1310);
-			checkpoint2 = new FlxSprite(936, 336);
-			checkpoint3 = new FlxSprite(2650, 1328);
-			checkpoint4 = new FlxSprite(4960, 336);
-			checkpoint5 = new FlxSprite(7105, 1230);
+			checkpoint1 = new FlxSprite(1950, 1344);
+			checkpoint2 = new FlxSprite(936, 352);
+			checkpoint3 = new FlxSprite(2650, 1344);
+			checkpoint4 = new FlxSprite(4960, 352);
+			checkpoint5 = new FlxSprite(7105, 1248);
+			checkpoint1.loadGraphic(Resources.GFX_Checkpoint, false, false, 32, 64);
+			checkpoint1.addAnimation("alive", [0],0);
+			checkpoint1.play("alive");
+			checkpoint1.addAnimation("dead", [1],0);
+			checkpoint2.loadGraphic(Resources.GFX_Checkpoint, false, false, 32, 64);
+			checkpoint2.addAnimation("alive", [0],0);
+			checkpoint2.play("alive");
+			checkpoint2.addAnimation("dead", [1],0);
+			checkpoint3.loadGraphic(Resources.GFX_Checkpoint, false, false, 32, 64);
+			checkpoint3.addAnimation("alive", [0],0);
+			checkpoint3.play("alive");
+			checkpoint3.addAnimation("dead", [1],0);
+			checkpoint4.loadGraphic(Resources.GFX_Checkpoint, false, false, 32, 64);
+			checkpoint4.addAnimation("alive", [0],0);
+			checkpoint4.play("alive");
+			checkpoint4.addAnimation("dead", [1],0);
+			checkpoint5.loadGraphic(Resources.GFX_Checkpoint, false, false, 32, 64);
+			checkpoint5.addAnimation("alive", [0],0);
+			checkpoint5.play("alive");
+			checkpoint5.addAnimation("dead", [1],0);
 			cps.add(checkpoint1);
 			cps.add(checkpoint2);
 			cps.add(checkpoint3);
@@ -61,6 +81,8 @@ package States
 			if (nothing2.alive)
 			{
 				nothing2.alive = false;
+				var temp:FlxSprite = nothing2 as FlxSprite;
+				temp.play("dead");
 				currectCheckPoint++;
 			}
 		}
@@ -82,6 +104,7 @@ package States
 				player.kill();
 				if (player.hasLives())
 				{
+					player.numberOfLives--;
 					camera.shake(0.05, 0.5, afterDeathShake);
 				}
 			}
@@ -93,6 +116,7 @@ package States
 				player.kill();
 				if (player.hasLives())
 				{
+					player.numberOfLives--;
 					camera.shake(0.05, 0.5, afterDeathShake);
 				}
 			}
