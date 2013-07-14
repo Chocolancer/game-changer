@@ -79,8 +79,8 @@ package States
 			enemyCollideGroup.add(pen4);
 			
 			exitDoor.loadGraphic(Resources.GFX_Door, false, false);
-			exitDoor.x = 5400;
-			exitDoor.y = 550;
+			exitDoor.x = 5451;
+			exitDoor.y = 668;
 			this.add(exitDoor);
 		}
 		

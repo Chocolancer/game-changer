@@ -190,10 +190,10 @@ package Objects
 			
 			if (FlxG.keys.W)
 			{
+				sound.loadEmbedded(Resources.SND_Jump);
+				sound.play(true);
 				if (isJumping)
 				{
-					sound.loadEmbedded(Resources.SND_Jump);
-					sound.play(true);
 					this.velocity.y = -400;
 					if (this.isTouching(CEILING))
 					{

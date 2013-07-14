@@ -7,6 +7,8 @@ package Objects
 	public class Axe extends IAG_Sprite 
 	{	
 		private var moveLeft:Boolean;
+		private var timeAlive: int = 120;
+		
 		public function Axe(x:Number,y:Number,moveLeft:Boolean) 
 		{
 			this.loadGraphic(Resources.GFX_Axe, true, true, 72, 65);
@@ -20,6 +22,11 @@ package Objects
 		override public function update():void 
 		{
 			super.update();
+			
+			if (timeAlive == 0) {
+				this.kill();
+			}
+		
 			if (moveLeft)
 			{
 				this.facing = LEFT;
@@ -30,6 +37,8 @@ package Objects
 				this.facing = RIGHT;
 				this.velocity.x = 500;
 			}
+			
+			timeAlive--;
 		}
 		 
 		

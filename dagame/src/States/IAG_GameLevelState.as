@@ -89,6 +89,8 @@ package States
 		
 		private function axeEnemyCallback(axe:FlxObject,enem:FlxObject):void
 		{
+			sound.loadEmbedded(Resources.SND_Enemydie);
+			sound.play(true);
 			axe.kill();
 			enem.kill();
 		}
