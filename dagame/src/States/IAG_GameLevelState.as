@@ -131,11 +131,15 @@ package States
 		
 		protected function onDeath():void
 		{
+			camera.stopFX();
 			if (!player.isDead)
 			{
 				player.isDead = true;
 				player.Kill();
 				camera.shake(0.05, 0.5, respawnPlayer);
+				if (this is DiscoLevel) {
+					respawnPlayer();
+				}
 			}
 		}
 		

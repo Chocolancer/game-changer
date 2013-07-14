@@ -24,7 +24,7 @@ package States
 			super.create();
 			
 			player.x = 80;
-			player.y = 80;
+			player.y = 40;
 			
 			exitDoor.loadGraphic(Resources.GFX_Door, false, false);
 			exitDoor.x = 3156;
@@ -38,21 +38,15 @@ package States
 		
 		override public function update():void 
 		{
-			var num: int = FlxG.random() * 200;
+			var num: int = FlxG.random() * 100;
 			
 			super.update();
 			
-			if (num == 100) {
-				camera.stopFX();
-				FlxG.flash();
+			if (num == 50) {
+				FlxG.flash(0xffffffff, 0.1);
 			}
 			
-			if (!stopShake) {
-				FlxG.shake(0.010);
-			}
-			else {
-				camera.stopFX();
-			}
+			FlxG.shake(0.010, 0.1);
 			
 			FlxG.overlap(player, exitDoor, exitDoorCallback);
 		}
@@ -66,13 +60,12 @@ package States
 		
 		private function nextLevel():void
 		{
-			FlxG.switchState(new TowerLevel());
+			FlxG.switchState(new Story_End());
 		}
 		
 		private function handleFall(tile: FlxTile = null, target: Object = null): void {
 			if (target is Player)
 			{
-				stopShake = true;
 				onDeath();
 			}
 		}
