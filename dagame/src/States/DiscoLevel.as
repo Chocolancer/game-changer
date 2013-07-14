@@ -60,7 +60,7 @@ package States
 		
 		private function nextLevel():void
 		{
-			FlxG.switchState(new Story_End());
+			FlxG.switchState(new EndGame());
 		}
 		
 		private function handleFall(tile: FlxTile = null, target: Object = null): void {
