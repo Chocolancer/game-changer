@@ -41,13 +41,17 @@ protected var enemyCollideGroup:FlxGroup = new FlxGroup();
 			camera.follow(player, FlxCamera.STYLE_PLATFORMER);
 
 			life_display = new FlxText(0, 0, 100, "Lives: " + player.numberOfLives);
+			life_display.origin = new FlxPoint(0, 0);
+			life_display.scale = new FlxPoint(4, 4);
 			life_display.scrollFactor = new FlxPoint();
 			this.add(life_display);
 			timer = new FlxTimer();
 			deathTimer = new FlxTimer();
 			timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
 			
-			time_display = new FlxText(0, 10, 100, "Time: " + TIME_TO_COMPLETE_LEVEL_SECONDS);
+			time_display = new FlxText(0, 40, 100, "Time: " + TIME_TO_COMPLETE_LEVEL_SECONDS);
+			time_display.origin = new FlxPoint(0, 0);
+			time_display.scale = new FlxPoint(4, 4);
 			time_display.scrollFactor = new FlxPoint();
 			this.add(time_display);
 			camera.zoom = 2;
@@ -101,7 +105,9 @@ protected var enemyCollideGroup:FlxGroup = new FlxGroup();
 			else
 			{
 				this.remove(time_display);
-				time_display = new FlxText(0, 10, 100, "Time: " + timer.loopsLeft);
+				time_display = new FlxText(0, 40, 100, "Time: " + timer.loopsLeft);
+				time_display.origin = new FlxPoint(0, 0);
+				time_display.scale = new FlxPoint(4, 4);
 				time_display.scrollFactor = new FlxPoint();
 				this.add(time_display);
 			}

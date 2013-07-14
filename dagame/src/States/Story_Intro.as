@@ -31,7 +31,7 @@ package States
 			szDialogues = new Array(3);
 			szDialogues[0] = "Raylene: \"My design for this game is for this tough and resourceful warrior to go on a quest through exotic lands, fighting terrifying beasts, recovering valuable treasure, and defending the weak against unjust and merciless brutes.\"";
 			szDialogues[1] = "Tony: \"I think you're onto something with these beasts and brutes, I've got a family to feed and a mortgage to pay. I'm not going to gamble my livelihood on a female protagonist.\"";
-			szDialogues[2] = "Tony: \"The hero this idea deserves is Goran, the wandering knight of few words. Our male player base will really identify with his quest for self actualization. It's a classic idea which might sound a little cliche to the kids nowadays, so we'll spice up this stereotype by giving him a chainsaw.\"";
+			szDialogues[2] = "Tony: \"The hero this idea deserves is Goran, the wandering knight of few words. Our male playerbase will really identify with his quest for self actualization. It's a classic idea which might sound a little cliche, so we'll spice up this stereotype by giving him a chainsaw!\"";
 
 			
 			textbox = new FlxText(FlxG.width * 0.05, 320, 480, szDialogues[0]);

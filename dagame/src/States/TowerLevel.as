@@ -48,8 +48,6 @@ package States
 			spikesHitbox = new FlxSprite(0, 3590);
 			spikesHitbox.makeGraphic(1400, 100, 0x00dd0000);
 			this.add(spikesHitbox);
-			//var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
-			//camera.follow(cameraFollow, FlxCamera.STYLE_PLATFORMER);
 						
 			for (var i:int = 0; i < 8; i++)
 			{
