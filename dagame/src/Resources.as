@@ -17,7 +17,7 @@ package
 		[Embed(source = "/../assets/gameart/hub_tiles.png")] public static var GFX_TSET_HUBTiles:Class; 
 		
 		//TILEMAPS
-		[Embed(source = "/../tilemaps/testmap.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
+		[Embed(source = "/../tilemaps/dungeon.txt", mimeType = "application/octet-stream")] public static var TMAP_Dungeon:Class;
 		//[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		[Embed(source = "/../tilemaps/disco.csv", mimeType = "application/octet-stream")] public static var TMAP_DiscoMap:Class;
@@ -36,6 +36,7 @@ package
 		[Embed(source = "../assets/gameart/computer.png")] public static var GFX_Computere:Class;
 		[Embed(source = "../assets/gameart/penguin.png")] public static var GFX_Penguin:Class;
 		[Embed(source="../assets/gameart/trashcan.png")] public static var GFX_Trashcan:Class;
+		[Embed(source="../assets/gameart/movingspikes.png")] public static var GFX_Movingspikes:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 

@@ -87,6 +87,7 @@ package Objects
 		
 		private function JumpCallback(Timer:FlxTimer):void {
 			this.isJumping = false;
+			jumpTimer.stop();
 		}
 		
 		public function Kill():void {
@@ -182,7 +183,7 @@ package Objects
 					if (this.isTouching(CEILING))
 					{
 						isJumping = false;
-					} 
+					}
 				}
 				else if (!this.isInAir && !wasWDown)
 				{
@@ -195,6 +196,7 @@ package Objects
 			}
 			else
 			{
+				this.jumpTimer.stop();
 				this.isJumping = false;
 				this.wasWDown = false;
 			}
@@ -266,6 +268,7 @@ package Objects
 		
 		public override function reset(X:Number, Y:Number):void
 		{
+			jumpTimer.stop();
 			super.reset(X, Y);
 			this.isDead = false;
 			this.alive = true;
