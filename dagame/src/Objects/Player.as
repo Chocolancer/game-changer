@@ -124,7 +124,7 @@ package Objects
 			{
 				if (isFacingForward)
 				{
-				game.addAxe(new Axe(this.x, this.y, false));
+					game.addAxe(new Axe(this.x, this.y, false));
 				}
 				else
 				{
