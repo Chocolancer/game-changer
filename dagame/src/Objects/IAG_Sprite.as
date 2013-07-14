@@ -20,6 +20,7 @@ package Objects
 			super.update();
 			
 			if (!this.alive && !this.isDead) {
+				this.allowCollisions = FlxObject.NONE;
 				this.velocity.x = 0;
 				this.velocity.y = -500;
 				//change sprite
@@ -31,6 +32,7 @@ package Objects
 				if (this.velocity.y >= 700) {
 					this.kill();
 					this.isDead = false;
+					this.allowCollisions = FlxObject.ANY;
 				}
 			}
 		}
