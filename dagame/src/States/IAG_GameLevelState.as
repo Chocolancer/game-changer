@@ -10,7 +10,7 @@ package States
 	 */
 	public class IAG_GameLevelState extends IAG_State
 	{
-		protected var player:Player = new Player();
+		protected var player:Player;
 		protected var tmap:FlxTilemap;
 		protected var camera:CustCamera;
 		protected var life_display:FlxText;
@@ -23,6 +23,7 @@ package States
 		
 		public var enemyGroup:FlxGroup = new FlxGroup(); 
 		protected var enemyCollideGroup:FlxGroup = new FlxGroup(); 
+		protected var axeGroup:FlxGroup = new FlxGroup();
 		
 		public function IAG_GameLevelState()
 		{
@@ -33,7 +34,7 @@ package States
 		{
 			super.create();
 			this.add(tmap);
-			player = new Player();
+			player = new Player(this);
 			this.add(player);
 			
 			FlxG.worldBounds = new FlxRect(0, 0, 10000, 10000);
@@ -61,6 +62,7 @@ package States
 			camera.zoom = 2;
 			
 			this.add(enemyGroup);
+			this.add(axeGroup);
 			camera.flash(0xff000000);
 		}
 		
@@ -77,7 +79,18 @@ package States
 			
 			FlxG.overlap(player, enemyGroup, playerEnemyCallback);
 			FlxG.collide(enemyCollideGroup, tmap);
+			FlxG.overlap(axeGroup, enemyGroup, axeEnemyCallback);
+		}
 		
+		private function axeEnemyCallback(axe:FlxObject,enem:FlxObject):void
+		{
+			axe.kill();
+			enem.kill();
+		}
+		
+		public function addAxe(axe:Axe)
+		{
+			axeGroup.add(axe);
 		}
 		
 		protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject):void
@@ -115,7 +128,7 @@ package States
 			{
 				player.isDead = true;
 				player.Kill();
-				camera.shake(0.05, 0.5, respawnPlayer);
+				camera.shake(0, 0.5, respawnPlayer);
 			}
 		}
 		

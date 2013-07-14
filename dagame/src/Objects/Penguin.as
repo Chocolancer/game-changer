@@ -17,7 +17,7 @@ package Objects
 		
 		public function Penguin(x:int, y:int,player:Player) //enemy example
 		{
-					//this.loadGraphic(GFX_Player, true, true, 92, 92);
+			//this.loadGraphic(GFX_Player, true, true, 92, 92);
 			this.x = x;
 			this.y = y;
 			this.playerRef = player;
