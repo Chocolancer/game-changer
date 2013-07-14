@@ -11,6 +11,7 @@ package Objects
 	public class Player extends IAG_Sprite
 	{
 		private var playerinfo:FlxText;
+		private var sound: FlxSound = new FlxSound();
 		private var debugMode:Boolean = false;
 		
 		
@@ -122,6 +123,8 @@ package Objects
 			
 			if (FlxG.keys.justPressed("G"))
 			{
+				sound.loadEmbedded(Resources.SND_Throw);
+				sound.play(true);
 				if (isFacingForward)
 				{
 					game.addAxe(new Axe(this.x, this.y, false));
@@ -195,6 +198,8 @@ package Objects
 			{
 				if (isJumping)
 				{
+					sound.loadEmbedded(Resources.SND_Jump);
+					sound.play(true);
 					this.velocity.y = -400;
 					if (this.isTouching(CEILING))
 					{

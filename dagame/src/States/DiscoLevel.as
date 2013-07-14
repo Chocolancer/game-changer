@@ -8,6 +8,7 @@ package States
 		
 		private var door:FlxSprite;
 		private var doorHitbox:FlxSprite;
+		private var partyPlayer: FlxSound;
 		
 		public function DiscoLevel() 
 		{
@@ -29,11 +30,19 @@ package States
 			doorHitbox = new FlxSprite(0, 3500);
 			doorHitbox.makeGraphic(1, 1, 0x00dd0000);
 			this.add(doorHitbox);
+			
+			partyPlayer = new FlxSound();
+			partyPlayer.loadEmbedded(Resources.SND_Partyrock, true);
+			partyPlayer.play(true);
 		}
 		
 		override public function update():void 
 		{
 			super.update();
+			FlxG.shake(0.010);
+			if (FlxG.elapsed % 2 == 0) {
+				FlxG.flash();
+			}
 			FlxG.overlap(this.player, this.doorHitbox, handleDoor);
 		}
 		

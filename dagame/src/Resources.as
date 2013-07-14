@@ -43,6 +43,10 @@ package
 		[Embed(source = "/../assets/gameart/TheEnd.png")] public static var GFX_THE_END:Class;
 		[Embed(source = "/../assets/gameart/StartSprite.png")] public static var GFX_THE_START:Class;
 		
+		//TUNEZ
+		[Embed(source = "/../assets/sounds/prock.mp3")] public static var SND_Partyrock:Class; 
+		[Embed(source = "/../assets/sounds/jump.mp3")] public static var SND_Jump:Class; 
+		[Embed(source = "/../assets/sounds/throw.mp3")] public static var SND_Throw:Class; 
 		
 		public function Resources() 
 		{
