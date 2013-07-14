@@ -93,7 +93,7 @@ package Objects
 			this.isDead = true;
 			this.play("idle");
 			this.numberOfLives--;
-			this.velocity.y = -500;
+			this.velocity.y = -750;
 		}
 		
 		private function UpdateAlive():void {
@@ -256,6 +256,7 @@ package Objects
 		}
 		
 		private function UpdateDead():void {
+			velocity.y += 30;
 			if (!isTouching(FLOOR))
 			{
 				//this doesnt work with sprites that are auto flipped - Alex

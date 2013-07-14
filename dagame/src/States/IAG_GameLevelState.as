@@ -108,7 +108,7 @@ package States
 			{
 				player.isDead = true;
 				player.Kill();
-				camera.shake(0.05, 0.5, respawnPlayer);
+				camera.shake(0, 0.5, respawnPlayer);
 			}
 		}
 		
