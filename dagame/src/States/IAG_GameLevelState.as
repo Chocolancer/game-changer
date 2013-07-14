@@ -17,6 +17,7 @@ package States
 		protected var time_display:FlxText;
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
 		protected var timer:FlxTimer;
+		protected var playerIsDead:Boolean = false;
 		
 		protected var enemyGroup:FlxGroup = new FlxGroup();
 		protected var enemyCollideGroup:FlxGroup = new FlxGroup();
@@ -101,19 +102,29 @@ package States
 			}
 		}
 		
-		private function onDeath():void
+		protected function onDeath():void
 		{
-			player.Kill();
-			bringToLife();
+			if (!player.isDead)
+			{
+				player.isDead = true;
+				player.Kill();
+				camera.shake(0.05, 0.5, respawnPlayer);
+			}
 		}
 		
-		private function bringToLife():void
+		protected function respawnPlayer():void
+		{
+			bringToLife(100, 100);
+		}
+		
+		protected function bringToLife(x:int, y:int):void
 		{
 			camera.stopFX();
+			camera.flash();
 			if (player.numberOfLives > 0)
 			{
 				player.isDead = false;
-				player.reset(100, 100);
+				player.reset(x, y);
 				timer.destroy();
 				timer = new FlxTimer();
 				timer.start(1, TIME_TO_COMPLETE_LEVEL_SECONDS, onTimer);
