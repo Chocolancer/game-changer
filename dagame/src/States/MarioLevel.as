@@ -2,6 +2,7 @@ package States
 {
 	import Objects.*;
 	import org.flixel.*;
+	import org.flixel.system.FlxTile;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -16,7 +17,7 @@ package States
 			tmap.loadMap(new Resources.TMAP_MalioMap, Resources.GFX_MalioTileSet, 32, 32);
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(6, FlxObject.NONE);
-			tmap.setTileProperties(11, FlxObject.NONE, player.fall);
+			tmap.setTileProperties(11, FlxObject.NONE, this.handleFall);
 		
 		}
 		override public function create():void 
@@ -72,36 +73,19 @@ package States
 		
 		private function exitDoorCallback(nothing:FlxObject,nothing2:FlxObject):void
 		{
-			FlxG.flash(0xffffffff, 1, exitDoorCallback2);
+			FlxG.flash(0xffffffff, 1, nextLevel);
 		}
 		
-		private function exitDoorCallback2():void
+		private function nextLevel():void
 		{
 			FlxG.switchState(new TowerLevel());
 		}
 		
-		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
-		{
-			super.playerEnemyCallback(player, enemy);
-			handlePlayerDeath(player, enemy);
-			return player;
-		}
-		
-		private function handlePlayerDeath(playerObj:FlxObject, spikes:FlxObject)
-		{
-			var player:Player = playerObj as Player;
-			player.kill();
-			if (player.hasLives())
-			{ 
-				camera.shake(0.05, 0.5, afterDeathShake); 
+		private function handleFall(tile: FlxTile= null, target: Object = null): void {
+			if (target is Player)
+			{
+				onDeath();
 			}
-			
-		}
-		private function afterDeathShake():void
-		{
-			camera.flash();
-			player.reset(120, 900); 
-			player.alive = true; 
 		}
 	}
 

@@ -9,20 +9,13 @@ package States
 	public class TowerLevel extends IAG_GameLevelState 
 	{
 		private var spikesHitbox:FlxSprite;
-		
-		
 		private var playedDiedReset:Boolean = false;
-		
-		
 		private var scissorGroup:FlxGroup = new FlxGroup();
 		
 		private var door:FlxSprite;
 		private var doorHitbox:FlxSprite;
 		
 		 
-		
-		
-		
 		public function TowerLevel() 
 		{
 			tmap = new FlxTilemap();
@@ -31,9 +24,6 @@ package States
 			//player.y = 10; temporary until set starting points are laid out for user.
 			tmap.setTileProperties(1, FlxObject.NONE);
 			tmap.setTileProperties(3, FlxObject.NONE);
-			
-
-			
 		}
 		
 		override public function create():void 
@@ -51,8 +41,6 @@ package States
 			spikesHitbox = new FlxSprite(0, 3590);
 			spikesHitbox.makeGraphic(1400, 100, 0x00dd0000);
 			this.add(spikesHitbox);
-			//var cameraFollow: TrailingCameraFollow = new TrailingCameraFollow(tmap);
-			//camera.follow(cameraFollow, FlxCamera.STYLE_PLATFORMER);
 						
 			for (var i:int = 0; i < 8; i++)
 			{
@@ -83,18 +71,22 @@ package States
 			this.add(doorHitbox);			
 		}
 		
+		override protected function respawnPlayer():void
+		{
+			spikesHitbox.y = 3600;
+			bringToLife(200, 3344);
+		}
 		
 		override public function update():void 
 		{
-			super.update();
-			
+			super.update();			
 			
 			FlxG.overlap(this.player, this.doorHitbox, exitDoorCallback);
 			
 			
 			spikesHitbox.velocity.y = -45;
 			
-			FlxG.overlap(this.player, this.spikesHitbox, handlePlayerSpikes);
+			FlxG.overlap(this.player, this.spikesHitbox, playerEnemyCallback);
 			
 			for (var i:Number = 0; i < scissorGroup.length; i++) 
 			{
@@ -112,11 +104,10 @@ package States
 			FlxG.switchState(new DungeonLevel());
 		}
 		
-		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject)
+		override protected function playerEnemyCallback(player:FlxObject, enemy:FlxObject):void
 		{
 			super.playerEnemyCallback(player, enemy);
 					handlePlayerSpikes(player, enemy);
-			return player;
 		}
 		
 		private function handlePlayerSpikes(playerObj:FlxObject, spikes:FlxObject)
@@ -141,5 +132,4 @@ package States
 			spikesHitbox.y = 3500;
 		}
 	}
-
 }

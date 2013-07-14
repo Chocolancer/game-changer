@@ -20,9 +20,8 @@ package Objects
 		public var isJumping:Boolean = false;
 		public var wasWDown:Boolean = false;
 		public var isFacingForward:Boolean = false;
-		public var numberOfLives:int = 10000;
+		public var numberOfLives:int = 10;
 		public var jumpTimer:FlxTimer;
-		public var isDead:Boolean = false;
 		
 		public function hasLives():Boolean
 		{
