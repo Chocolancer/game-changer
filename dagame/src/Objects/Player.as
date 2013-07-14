@@ -91,13 +91,14 @@ package Objects
 		
 		private function JumpCallback(Timer:FlxTimer):void {
 			this.isJumping = false;
+			jumpTimer.stop();
 		}
 		
 		public function Kill():void {
 			this.isDead = true;
 			this.play("idle");
 			this.numberOfLives--;
-			this.velocity.y = -500;
+			this.velocity.y = -750;
 		}
 		
 		private function UpdateAlive():void {
@@ -198,7 +199,7 @@ package Objects
 					if (this.isTouching(CEILING))
 					{
 						isJumping = false;
-					} 
+					}
 				}
 				else if (!this.isInAir && !wasWDown)
 				{
@@ -211,6 +212,7 @@ package Objects
 			}
 			else
 			{
+				this.jumpTimer.stop();
 				this.isJumping = false;
 				this.wasWDown = false;
 			}
@@ -272,6 +274,7 @@ package Objects
 		}
 		
 		private function UpdateDead():void {
+			velocity.y += 30;
 			if (!isTouching(FLOOR))
 			{
 				//this doesnt work with sprites that are auto flipped - Alex
@@ -281,6 +284,7 @@ package Objects
 		
 		public override function reset(X:Number, Y:Number):void
 		{
+			jumpTimer.stop();
 			super.reset(X, Y);
 			this.isDead = false;
 			this.alive = true;
