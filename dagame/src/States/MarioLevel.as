@@ -42,6 +42,25 @@ package States
 			var pig6:FlyingPig = new FlyingPig(4880, 620); 
 			enemyGroup.add(pig6);
 			
+			var bigPig1:FlyingPig = new FlyingPig(1200, 520); 
+			bigPig1.scale.x = 3;
+			bigPig1.scale.y = 3;
+			enemyGroup.add(bigPig1);
+			
+			var bigPig2:FlyingPig = new FlyingPig(1900, 420); 
+			bigPig2.scale.x = 3;
+			bigPig2.scale.y = 3;
+			enemyGroup.add(bigPig2);
+			
+			var bigPig3:FlyingPig = new FlyingPig(3800, 420); 
+			bigPig3.scale.x = 3;
+			bigPig3.scale.y = 3;
+			enemyGroup.add(bigPig3);
+			
+			var bigPig4:FlyingPig = new FlyingPig(4600, 440); 
+			bigPig4.scale.x = 3;
+			bigPig4.scale.y = 3;
+			enemyGroup.add(bigPig4); 
 			
 			var pen1:Penguin = new Penguin(1047, 1040, player);
 			enemyGroup.add(pen1); 
