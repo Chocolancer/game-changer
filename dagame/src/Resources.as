@@ -37,6 +37,7 @@ package
 		[Embed(source = "../assets/gameart/penguin.png")] public static var GFX_Penguin:Class;
 		[Embed(source="../assets/gameart/trashcan.png")] public static var GFX_Trashcan:Class;
 		[Embed(source="../assets/gameart/movingspikes.png")] public static var GFX_Movingspikes:Class;
+		[Embed(source="../assets/gameart/axe.png")] public static var GFX_Axe:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
