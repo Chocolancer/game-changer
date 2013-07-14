@@ -18,7 +18,7 @@ package States
 			var introImage:FlxSprite = new FlxSprite(0, 0, Resources.GFX_THE_START);
 			add(introImage);
 			
-			var textbox:FlxText = new FlxText( 100, 340, 400, "Your game character is too ugly. We need one with chiseled pecs and tight buns.");
+			var textbox:FlxText = new FlxText( 100, 340, 400, "Your game is over, but sales are just beginning!");
 			textbox.setFormat(null, 8, 0x00FF00, "center");
 			add(textbox);
 		}
