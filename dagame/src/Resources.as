@@ -47,7 +47,9 @@ package
 		[Embed(source = "/../assets/sounds/prock.mp3")] public static var SND_Partyrock:Class; 
 		[Embed(source = "/../assets/sounds/jump.mp3")] public static var SND_Jump:Class; 
 		[Embed(source = "/../assets/sounds/throw.mp3")] public static var SND_Throw:Class; 
-		
+		[Embed(source = "/../assets/sounds/playerdie.mp3")] public static var SND_Playerdie:Class; 
+		[Embed(source = "/../assets/sounds/enemydie.mp3")] public static var SND_Enemydie:Class; 
+		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class; 
 		public function Resources() 
 		{
 			

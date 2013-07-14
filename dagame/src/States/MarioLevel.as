@@ -73,6 +73,8 @@ package States
 		
 		private function exitDoorCallback(nothing:FlxObject,nothing2:FlxObject):void
 		{
+			sound.loadEmbedded(Resources.SND_Nextlevel);
+			sound.play(true);
 			FlxG.flash(0xffffffff, 1, nextLevel);
 		}
 		

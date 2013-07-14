@@ -96,6 +96,8 @@ package Objects
 		}
 		
 		public function Kill():void {
+			sound.loadEmbedded(Resources.SND_Playerdie);
+			sound.play(true);
 			this.isDead = true;
 			this.play("idle");
 			this.numberOfLives--;
