@@ -18,13 +18,15 @@ package
 		
 		//TILEMAPS
 		[Embed(source = "/../tilemaps/testmap.txt", mimeType = "application/octet-stream")] public static var TMAP_Map:Class;
-		//[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
-		[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+		[Embed(source = "/../tilemaps/hublevel.txt", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
+		//[Embed(source = "/../tilemaps/mapCSV_Group1_Map1.csv", mimeType = "application/octet-stream")] public static var TMAP_Map_HUB:Class;
 		[Embed(source = "/../tilemaps/disco.csv", mimeType = "application/octet-stream")] public static var TMAP_DiscoMap:Class;
 		[Embed(source = "/../tilemaps/malio.csv", mimeType = "application/octet-stream")] public static var TMAP_MalioMap:Class;
 		[Embed(source = "/../tilemaps/paperscraps.csv", mimeType = "application/octet-stream")] public static var TMAP_PaperscrapsMap:Class;
 		[Embed(source = "/../tilemaps/tower.csv", mimeType = "application/octet-stream")] public static var TMAP_TowerMap:Class;
+		[Embed(source = "/../tilemaps/boss.csv", mimeType = "application/octet-stream")] public static var TMAP_BossMap:Class;
 		
+
 		//SPRITES
 		//[Embed(source = "/../assets/gameart/test_player_cropped.png")] public static var GFX_Player:Class;
 		[Embed(source = "/../assets/gameart/player.png")] public static var GFX_Player:Class;
