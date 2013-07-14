@@ -9,6 +9,11 @@ package Objects
 	 */
 	public class Player extends IAG_Sprite
 	{
+		private var playerinfo:FlxText;
+		private var debugMode:Boolean = false;
+		
+		
+		
 		private const AIR_VELOCITY:Number = 10;
 		
 		public var isInAir:Boolean = true;
@@ -18,6 +23,15 @@ package Objects
 		public var numberOfLives:int = 2;
 		public var jumpTimer:FlxTimer;
 		public var isDead:Boolean = false;
+		
+		public function hasLives():Boolean
+		{
+			if (numberOfLives > 0)
+			{
+				return true;
+			}
+			return false;
+		}
 
 		public function Player() 
 		{
@@ -38,6 +52,16 @@ package Objects
 			this.maxVelocity.y = 1000;
 			jumpTimer = new FlxTimer();
 			acceleration.y = 600;
+			
+			//TODO: This is where you enable player debugging
+			
+			debugMode = true;
+			
+			if (debugMode)
+			{
+				playerinfo = new FlxText(this.x - 20, this.y - 10, 150, "debug info");
+				
+			}
 		}
 		
 		
@@ -76,7 +100,7 @@ package Objects
 		private function UpdateAlive():void {
 			
 			super.update();
-			acceleration.y = 2000;
+			acceleration.y = 3000;
 			
 			if (!this.alive && !this.exists) {
 				this.numberOfLives--;
@@ -213,13 +237,30 @@ package Objects
 					play("idle");
 				}
 				
+			} 
+			if (debugMode)
+			{
+				playerinfo.text = "X : " + this.x + " Y : " + this.y;
+				playerinfo.x = this.x - 20;
+				playerinfo.y = this.y - 10;
+				playerinfo.update();
+			}
+		}
+		
+		override public function draw():void 
+		{
+			super.draw();
+			if (debugMode)
+			{
+				playerinfo.draw();
 			}
 		}
 		
 		private function UpdateDead():void {
 			if (!isTouching(FLOOR))
 			{
-				this.angle += 10;
+				//this doesnt work with sprites that are auto flipped - Alex
+				//this.angle += 10;
 			}
 		}
 		
