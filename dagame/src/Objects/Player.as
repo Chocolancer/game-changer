@@ -190,7 +190,7 @@ package Objects
 					this.velocity.y = 0;
 					this.isInAir = true;
 					this.isJumping = true;
-					this.jumpTimer.start(1, 1, JumpCallback);
+					this.jumpTimer.start(0.5, 1, JumpCallback);
 				}
 				this.wasWDown = true;
 			}
