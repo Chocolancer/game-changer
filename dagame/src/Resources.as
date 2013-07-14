@@ -62,5 +62,6 @@ package
 		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class;
 		[Embed(source = "/../assets/sounds/Tower 1.mp3")] public static var SND_TowerLevel:Class;
 		[Embed(source = "/../assets/sounds/Mario Level 1.mp3")] public static var SND_MarioLevel:Class;
+		[Embed(source = "/../assets/sounds/Intro.mp3")] public static var SND_Intro:Class;
 	}
 }
