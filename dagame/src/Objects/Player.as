@@ -11,6 +11,7 @@ package Objects
 	public class Player extends IAG_Sprite
 	{
 		private var playerinfo:FlxText;
+		private var sound: FlxSound = new FlxSound();
 		private var debugMode:Boolean = false;
 		
 		
@@ -95,6 +96,8 @@ package Objects
 		}
 		
 		public function Kill():void {
+			sound.loadEmbedded(Resources.SND_Playerdie);
+			sound.play(true);
 			this.isDead = true;
 			this.play("idle");
 			this.numberOfLives--;
@@ -122,6 +125,8 @@ package Objects
 			
 			if (FlxG.keys.justPressed("G"))
 			{
+				sound.loadEmbedded(Resources.SND_Throw);
+				sound.play(true);
 				if (isFacingForward)
 				{
 					game.addAxe(new Axe(this.x, this.y, false));
@@ -195,6 +200,8 @@ package Objects
 			{
 				if (isJumping)
 				{
+					sound.loadEmbedded(Resources.SND_Jump);
+					sound.play(true);
 					this.velocity.y = -400;
 					if (this.isTouching(CEILING))
 					{
@@ -206,7 +213,7 @@ package Objects
 					this.velocity.y = 0;
 					this.isInAir = true;
 					this.isJumping = true;
-					this.jumpTimer.start(1, 1, JumpCallback);
+					this.jumpTimer.start(0.5, 1, JumpCallback);
 				}
 				this.wasWDown = true;
 			}

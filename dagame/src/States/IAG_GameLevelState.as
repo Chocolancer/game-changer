@@ -11,6 +11,8 @@ package States
 	public class IAG_GameLevelState extends IAG_State
 	{
 		protected var player:Player;
+		protected var music: FlxSound;
+		protected var sound: FlxSound;
 		protected var tmap:FlxTilemap;
 		protected var camera:CustCamera;
 		protected var life_display:FlxText;
@@ -36,6 +38,9 @@ package States
 			this.add(tmap);
 			player = new Player(this);
 			this.add(player);
+			
+			sound = new FlxSound();
+			music = new FlxSound();
 			
 			FlxG.worldBounds = new FlxRect(0, 0, 10000, 10000);
 			camera = new CustCamera(0, 0, FlxG.width * 2, FlxG.height * 2, 1);
@@ -128,7 +133,7 @@ package States
 			{
 				player.isDead = true;
 				player.Kill();
-				camera.shake(0.5, 0.5, respawnPlayer);
+				camera.shake(0.05, 0.5, respawnPlayer);
 			}
 		}
 		

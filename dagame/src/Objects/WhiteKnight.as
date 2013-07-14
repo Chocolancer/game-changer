@@ -7,7 +7,7 @@ package Objects
 	public class WhiteKnight extends IAG_Sprite
 	{
 		
-		public function FlyingPig(x:int, y:int) //enemy example
+		public function WhiteKnight(x:int, y:int):void //enemy example
 		{
 			//this.loadGraphic(GFX_Player, true, true, 92, 92);
 			this.x = x;

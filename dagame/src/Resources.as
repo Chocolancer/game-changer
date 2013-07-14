@@ -45,16 +45,20 @@ package
 		[Embed(source = "../assets/gameart/penguin.png")] public static var GFX_Penguin:Class;
 		[Embed(source="../assets/gameart/trashcan.png")] public static var GFX_Trashcan:Class;
 		[Embed(source="../assets/gameart/movingspikes.png")] public static var GFX_Movingspikes:Class;
+		[Embed(source="../assets/gameart/WhiteKnight.png")] public static var GFX_WhiteKnight:Class;
 		
 		//OTHER ART
 		[Embed(source = "/../assets/gameart/hub_background.png")] public static var GFX_HUB_Background:Class; 
 		[Embed(source = "/../assets/gameart/TheEnd.png")] public static var GFX_THE_END:Class;
 		[Embed(source = "/../assets/gameart/StartSprite.png")] public static var GFX_THE_START:Class;
 		
-		
-		public function Resources() 
-		{
-			
-		}
+		//TUNEZ
+		[Embed(source = "/../assets/sounds/prock.mp3")] public static var SND_Partyrock:Class; 
+		[Embed(source = "/../assets/sounds/jump.mp3")] public static var SND_Jump:Class; 
+		[Embed(source = "/../assets/sounds/throw.mp3")] public static var SND_Throw:Class; 
+		[Embed(source = "/../assets/sounds/playerdie.mp3")] public static var SND_Playerdie:Class; 
+		[Embed(source = "/../assets/sounds/enemydie.mp3")] public static var SND_Enemydie:Class; 
+		[Embed(source = "/../assets/sounds/nextlevel.mp3")] public static var SND_Nextlevel:Class;
+		[Embed(source = "/../assets/sounds/Tower 1.mp3")] public static var SND_TowerLevel:Class;
 	}
 }
