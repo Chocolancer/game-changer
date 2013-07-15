@@ -43,10 +43,10 @@ package States
 			super.update();
 			
 			if (num == 50) {
-				FlxG.flash(0xffffffff, 0.1);
+				FlxG.flash(0xffffffff, 0.5);
 			}
 			
-			FlxG.shake(0.010, 0.1);
+			FlxG.shake();
 			
 			FlxG.overlap(player, exitDoor, exitDoorCallback);
 		}

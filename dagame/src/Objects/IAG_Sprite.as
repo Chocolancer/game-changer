@@ -23,7 +23,6 @@ package Objects
 				this.allowCollisions = FlxObject.NONE;
 				this.velocity.x = 0;
 				this.velocity.y = -500;
-				//change sprite
 				this.isDead = true;
 			}
 			
