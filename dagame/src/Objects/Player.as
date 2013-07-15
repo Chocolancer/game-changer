@@ -12,7 +12,7 @@ package Objects
 	{
 		private var playerinfo:FlxText;
 		private var sound: FlxSound = new FlxSound();
-		private var debugMode:Boolean = false;
+		private var debugMode:Boolean;
 		
 		
 		private const AXE_RESET:Number = 1.0;
@@ -63,7 +63,7 @@ package Objects
 			
 			//TODO: This is where you enable player debugging
 			
-			debugMode = false;
+			debugMode = true;
 			
 			if (debugMode)
 			{

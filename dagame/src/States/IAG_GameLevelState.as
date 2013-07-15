@@ -11,7 +11,6 @@ package States
 	public class IAG_GameLevelState extends IAG_State
 	{
 		protected var player:Player;
-		protected var music: FlxSound;
 		protected var sound: FlxSound;
 		protected var tmap:FlxTilemap;
 		protected var camera:CustCamera;
@@ -19,7 +18,7 @@ package States
 		protected var time_display:FlxText;
 		public static var TIME_TO_COMPLETE_LEVEL_SECONDS:int = 180;
 		protected var checkPoints:Array = new Array();
-		protected var currectCheckPoint:uint = 0;
+		protected var currentCheckPoint:uint = 0;
 		protected var timer:FlxTimer;
 		protected var playerIsDead:Boolean = false;
 		
@@ -40,7 +39,6 @@ package States
 			this.add(player);
 			
 			sound = new FlxSound();
-			music = new FlxSound();
 			
 			FlxG.worldBounds = new FlxRect(0, 0, 10000, 10000);
 			camera = new CustCamera(0, 0, FlxG.width * 2, FlxG.height * 2, 1);
@@ -95,7 +93,7 @@ package States
 			enem.kill();
 		}
 		
-		public function addAxe(axe:Axe)
+		public function addAxe(axe:Axe):void
 		{
 			axeGroup.add(axe);
 		}
@@ -144,16 +142,16 @@ package States
 		
 		protected function respawnPlayer():void
 		{
-			bringToLife(100, 100);
+			bringToLife();
 		}
 		
-		protected function bringToLife(x:int, y:int):void
+		protected function bringToLife():void
 		{
 			camera.stopFX();
 			camera.flash();
 			if (player.numberOfLives > 0)
 			{
-				player.reset(checkPoints[currectCheckPoint][0], checkPoints[currectCheckPoint][1]);
+				player.reset(checkPoints[currentCheckPoint][0], checkPoints[currentCheckPoint][1]);
 				player.isDead = false;
 				timer.destroy();
 				timer = new FlxTimer();

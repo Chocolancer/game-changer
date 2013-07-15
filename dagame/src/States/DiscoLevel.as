@@ -8,7 +8,6 @@ package States
 	{
 		
 		private var exitDoor:FlxSprite = new FlxSprite();
-		private var partyPlayer: FlxSound;
 		private var stopShake: Boolean = false;
 		
 		public function DiscoLevel() 
@@ -31,9 +30,7 @@ package States
 			exitDoor.y = 176;
 			this.add(exitDoor);
 			
-			partyPlayer = new FlxSound();
-			partyPlayer.loadEmbedded(Resources.SND_Partyrock, true);
-			partyPlayer.play(true);
+			FlxG.playMusic(Resources.SND_Partyrock);
 		}
 		
 		override public function update():void 

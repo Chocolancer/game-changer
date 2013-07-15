@@ -72,8 +72,8 @@ package States
 		override public function create():void 
 		{
 			super.create();	
-			player.x = checkPoints[currectCheckPoint][0];
-			player.y = checkPoints[currectCheckPoint][1];
+			player.x = checkPoints[currentCheckPoint][0];
+			player.y = checkPoints[currentCheckPoint][1];
 		}
 		
 		override public function update():void 
@@ -85,6 +85,8 @@ package States
 		
 		private function endgameCallback(nothing:FlxObject, nothing2:FlxObject):void
 		{
+			sound.loadEmbedded(Resources.SND_Nextlevel);
+			sound.play(true);
 			FlxG.switchState(new DiscoLevel());
 		}
 		
@@ -95,7 +97,7 @@ package States
 				nothing2.alive = false;
 				var temp:FlxSprite = nothing2 as FlxSprite;
 				temp.play("dead");
-				currectCheckPoint++;
+				currentCheckPoint++;
 			}
 		}
 		
@@ -103,33 +105,29 @@ package States
 			
 			if (player.isTouching(0x1000))
 			{
-				var box = new PopUpBox(this, Tile.x, Tile.y);
+				var box:PopUpBox = new PopUpBox(this, Tile.x, Tile.y);
 				this.add(box.spikes);
 				box.Activate();
 			}
 		}
 		
-		private function FloorSpikeCollisionCallback(Tile:FlxTile, Object:FlxObject):void 
+		private function FloorSpikeCollisionCallback(Tile:FlxTile, target:FlxObject):void 
 		{
 			if (player.justTouched(0x1000))
 			{
-				player.kill();
-				if (player.hasLives())
+				if (target is Player)
 				{
-					player.numberOfLives--;
-					camera.shake(0.05, 0.5, afterDeathShake);
+					onDeath();
 				}
 			}
 		}
-		private function CeilingSpikeCollisionCallback(Tile:FlxTile, Object:FlxObject):void 
+		private function CeilingSpikeCollisionCallback(Tile:FlxTile, target:FlxObject):void 
 		{
 			if (player.justTouched(0x0100))
 			{
-				player.kill();
-				if (player.hasLives())
+				if (target is Player)
 				{
-					player.numberOfLives--;
-					camera.shake(0.05, 0.5, afterDeathShake);
+					onDeath();
 				}
 			}
 		}
@@ -137,7 +135,7 @@ package States
 		private function afterDeathShake():void
 		{
 			camera.flash();
-			bringToLife(200, 3344);
+			bringToLife();
 		}
 	}
 }

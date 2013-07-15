@@ -10,8 +10,8 @@ package Objects
 	public class WhiteKnight extends IAG_Sprite
 	{
 		
-		var axeTimer:FlxTimer;
-		var hitpoints:int;
+		private var axeTimer:FlxTimer;
+		private var hitpoints:int;
 		private var game:IAG_GameLevelState;
 		private var sound:FlxSound = new FlxSound();
 		
