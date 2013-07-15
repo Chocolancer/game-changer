@@ -10,7 +10,7 @@ package
 	{ 
 		public function Main()
 		{
-			super(640, 480, TowerLevel, 2);
+			super(640, 480, MainMenu, 2);
 		}
 	}
 	
